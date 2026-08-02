@@ -661,6 +661,126 @@ img { max-width: 100%; display: block; }
     line-height: 1.6;
 }
 
+/* === PLANS === */
+.plans {
+    padding: 100px 0;
+    background: var(--blue-50);
+}
+
+.plans__category {
+    margin-bottom: 48px;
+}
+
+.plans__category-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.plans__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.plans__grid--single {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.plan-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.plan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.plan-card--featured {
+    border: 2px solid var(--blue-600);
+    background: linear-gradient(180deg, var(--blue-50) 0%, var(--white) 100%);
+}
+
+.plan-card__badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 50px;
+    background: var(--gray-100);
+    color: var(--gray-600);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.plan-card__badge--featured {
+    background: var(--blue-600);
+    color: var(--white);
+}
+
+.plan-card__name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--gray-800);
+    margin-bottom: 16px;
+}
+
+.plan-card__features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.plan-card__features span {
+    font-size: 0.95rem;
+    color: var(--gray-600);
+}
+
+.plan-card__features strong {
+    color: var(--blue-600);
+    font-weight: 700;
+}
+
+.plan-card__price {
+    margin-bottom: 16px;
+}
+
+.plan-card__price .price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--blue-600);
+}
+
+.plan-card__price .price-cents {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.plan-card__note {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    margin-bottom: 16px;
+}
+
+.plans__info {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-600);
+    margin-top: 32px;
+}
+
 /* === FAQ === */
 .faq {
     padding: 100px 0;
@@ -975,6 +1095,7 @@ img { max-width: 100%; display: block; }
     }
 
     .services__grid,
+    .plans__grid,
     .differentials__grid {
         grid-template-columns: 1fr;
     }
