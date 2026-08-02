@@ -154,6 +154,23 @@ img { max-width: 100%; display: block; }
 
 .logo-icon { font-size: 1.6rem; }
 
+.navbar__logo-img {
+    height: 36px;
+    width: auto;
+}
+
+.footer__logo-img {
+    height: 32px;
+    width: auto;
+}
+
+.service-card__icon-img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
 .navbar__links {
     display: flex;
     gap: 32px;
@@ -987,6 +1004,11 @@ img { max-width: 100%; display: block; }
     font-weight: 800;
     color: var(--white);
     margin-bottom: 12px;
+}
+
+.footer__logo-img {
+    height: 36px;
+    width: auto;
 }
 
 .footer__tagline {
