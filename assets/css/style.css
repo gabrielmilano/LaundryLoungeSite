@@ -199,6 +199,22 @@ img { max-width: 100%; display: block; }
     background: var(--gray-800);
 }
 
+.navbar__toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar__toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar__toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.navbar.scrolled .navbar__toggle span {
+    background: var(--gray-800);
+}
+
 /* === HERO === */
 .hero {
     min-height: 100vh;
@@ -1125,6 +1141,10 @@ img { max-width: 100%; display: block; }
         display: flex;
     }
 
+    .navbar.mobile-open {
+        background: var(--white);
+    }
+
     .navbar.mobile-open .navbar__links {
         display: flex;
         flex-direction: column;
@@ -1137,6 +1157,13 @@ img { max-width: 100%; display: block; }
         gap: 16px;
         border-bottom: 1px solid var(--gray-200);
         box-shadow: var(--shadow);
+        z-index: 1000;
+    }
+
+    .navbar.mobile-open .navbar__links a {
+        color: var(--gray-800);
+        font-size: 1rem;
+        padding: 8px 0;
     }
 
     .navbar.mobile-open .navbar__cta {
@@ -1146,19 +1173,37 @@ img { max-width: 100%; display: block; }
         left: 24px;
         right: 24px;
         justify-content: center;
+        z-index: 1000;
     }
 
     .hero {
-        padding: 100px 0 60px;
+        padding: 80px 0 40px;
         min-height: auto;
     }
 
     .hero__title {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
+    }
+
+    .hero__subtitle {
+        font-size: 0.95rem;
+    }
+
+    .hero__badge {
+        font-size: 0.75rem;
+        padding: 6px 14px;
     }
 
     .steps {
         grid-template-columns: 1fr;
+    }
+
+    .plans__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plans__grid--single {
+        max-width: 100%;
     }
 }
 
@@ -1166,11 +1211,17 @@ img { max-width: 100%; display: block; }
     .hero__actions {
         flex-direction: column;
         align-items: center;
+        gap: 12px;
     }
 
     .hero__actions .btn {
         width: 100%;
-        max-width: 300px;
+        max-width: 280px;
+    }
+
+    .btn--lg {
+        padding: 14px 24px;
+        font-size: 0.95rem;
     }
 
     .cta-final__actions {
@@ -1180,6 +1231,26 @@ img { max-width: 100%; display: block; }
 
     .cta-final__actions .btn {
         width: 100%;
-        max-width: 300px;
+        max-width: 280px;
+    }
+
+    .navbar__logo {
+        font-size: 1.1rem;
+    }
+
+    .navbar__logo .logo-icon {
+        font-size: 1.3rem;
+    }
+
+    .plan-card {
+        padding: 24px;
+    }
+
+    .plan-card__name {
+        font-size: 1.2rem;
+    }
+
+    .plan-card__price .price {
+        font-size: 1.8rem;
     }
 }
