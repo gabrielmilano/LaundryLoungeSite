@@ -791,17 +791,18 @@ img { max-width: 100%; display: block; }
 
 .plan-card__ribbon {
     position: absolute;
-    top: 15px;
-    right: -35px;
+    top: 18px;
+    right: -30px;
     background: var(--blue-600);
     color: var(--white);
-    padding: 6px 40px;
-    font-size: 0.75rem;
+    padding: 5px 35px;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     transform: rotate(45deg);
     box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    z-index: 1;
 }
 
 .plan-card--featured {
