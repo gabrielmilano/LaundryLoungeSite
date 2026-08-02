@@ -789,6 +789,26 @@ img { max-width: 100%; display: block; }
     margin-bottom: 16px;
 }
 
+.plan-card__ribbon {
+    position: absolute;
+    top: 15px;
+    right: -35px;
+    background: var(--blue-600);
+    color: var(--white);
+    padding: 6px 40px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.plan-card--featured {
+    position: relative;
+    overflow: hidden;
+}
+
 .plans__info {
     text-align: center;
     font-size: 1rem;
