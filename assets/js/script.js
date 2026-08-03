@@ -28,6 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 navToggle.classList.remove('active');
             });
         });
+
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && nav.classList.contains('mobile-open')) {
+                nav.classList.remove('mobile-open');
+                navToggle.classList.remove('active');
+            }
+        });
     }
 
     // === SMOOTH SCROLL ===
