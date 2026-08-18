@@ -822,6 +822,13 @@ img { max-width: 100%; display: block; }
     font-weight: 600;
 }
 
+.plan-card__price .price--contact {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gray-600);
+    font-style: italic;
+}
+
 .plan-card__note {
     font-size: 0.8rem;
     color: var(--gray-500);
