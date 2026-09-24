@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>PolÃ­tica de Privacidade â€” Laundry Lounge Ads Assistant</title>
+    <meta name="description" content="PolÃ­tica de privacidade da ferramenta interna Laundry Lounge Ads Assistant, que consulta dados da conta de Google Ads da Laundry Lounge (lavanderialaundrylounge.com.br).">
+    <link rel="canonical" href="https://lavanderialaundrylounge.com.br/politica-de-privacidade-google-ads/">
+    <meta name="theme-color" content="#1a2744">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --blue-900: #0c1b33; --blue-800: #1a2744; --blue-700: #1e3a5f;
+            --blue-600: #2563eb; --blue-400: #60a5fa; --blue-100: #dbeafe; --blue-50: #eff6ff;
+            --gray-50: #f8fafc; --gray-100: #f1f5f9; --gray-200: #e2e8f0; --gray-400: #94a3b8;
+            --gray-500: #64748b; --gray-700: #334155; --gray-800: #1e293b; --white: #ffffff;
+            --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,.08); --font: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+            --danger: #dc2626;
+        }
+        body { font-family: var(--font); color: var(--gray-800); background: var(--gray-50); line-height: 1.65; }
+        .container { max-width: 820px; margin: 0 auto; padding: 0 20px; }
+
+        .navbar { background: var(--blue-900); color: var(--white); padding: 16px 0; position: sticky; top: 0; z-index: 50; }
+        .navbar__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .navbar__logo { color: var(--white); text-decoration: none; font-weight: 800; font-size: 1.1rem; }
+        .navbar__cta { color: var(--white); text-decoration: none; font-size: .9rem; border: 1px solid rgba(255,255,255,.4); padding: 8px 16px; border-radius: 999px; transition: .2s; }
+        .navbar__cta:hover { background: rgba(255,255,255,.12); }
+
+        .page-hero { background: linear-gradient(135deg, var(--blue-900), var(--blue-700)); color: var(--white); padding: 56px 0 48px; }
+        .page-hero .badge { display: inline-block; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28); font-size: .8rem; letter-spacing: .05em; text-transform: uppercase; font-weight: 600; padding: 6px 14px; border-radius: 999px; margin-bottom: 14px; }
+        .page-hero h1 { font-size: 2rem; line-height: 1.2; font-weight: 800; margin-bottom: 10px; }
+        .page-hero p { color: var(--blue-100); max-width: 720px; }
+        .page-hero .meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; font-size: .85rem; color: var(--blue-100); }
+
+        .content { padding: 44px 0 64px; }
+        .card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px; margin-bottom: 24px; }
+        .card h2 { color: var(--blue-800); font-size: 1.35rem; margin-bottom: 12px; }
+        .card h3 { color: var(--blue-700); font-size: 1.05rem; margin: 20px 0 8px; }
+        .card p, .card li { font-size: .95rem; color: var(--gray-700); }
+        .card ul { margin: 8px 0 0 20px; }
+        .card li { margin-bottom: 8px; }
+        .updated { background: var(--blue-50); border-left: 4px solid var(--blue-400); padding: 12px 16px; font-size: .9rem; border-radius: 8px; margin-bottom: 28px; color: var(--blue-800); }
+        .resumo { background: var(--gray-50); border: 1px dashed var(--gray-200); border-radius: 10px; padding: 18px 20px; font-size: .93rem; }
+        .resumo strong { color: var(--blue-800); }
+        table { width: 100%; border-collapse: collapse; margin: 10px 0 6px; font-size: .9rem; }
+        th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+        th { background: var(--blue-50); color: var(--blue-800); font-weight: 600; }
+        .call { display: block; margin: 6px 0; font-weight: 600; color: var(--blue-800); }
+        a { color: var(--blue-600); }
+        .btn { display: inline-block; background: var(--blue-600); color: var(--white); text-decoration: none; padding: 13px 24px; border-radius: 10px; font-weight: 600; margin-top: 16px; }
+
+        .footer { background: var(--blue-900); color: var(--gray-300); padding: 40px 0 20px; margin-top: 20px; }
+        .footer__links { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-bottom: 14px; }
+        .footer__links a { color: var(--blue-100); text-decoration: none; font-size: .9rem; }
+        .footer__links a:hover { color: var(--white); }
+        .footer__bottom { border-top: 1px solid rgba(255,255,255,.12); padding-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: .82rem; justify-content: space-between; }
+        .footer__bottom a { color: var(--blue-100); }
+
+        @media (max-width: 600px) {
+            .page-hero h1 { font-size: 1.55rem; }
+            .card { padding: 22px 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container navbar__inner">
+            <a href="../" class="navbar__logo">Laundry <span class="navbar__logo-accent" style="color:var(--blue-400)">Lounge</span></a>
+            <a href="../" class="navbar__cta">Voltar ao site</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="badge">PolÃ­tica de Privacidade</span>
+            <h1>Laundry Lounge Ads Assistant</h1>
+            <p>PolÃ­tica de privacidade da ferramenta interna Laundry Lounge Ads Assistant, usada para consultar e
+            analisar dados da conta de Google Ads da Laundry Lounge.</p>
+            <div class="meta">
+                <span>DomÃ­nio: lavanderialaundrylounge.com.br</span>
+                <span>Ãšltima atualizaÃ§Ã£o: 24/09/2026 de setembro de 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <div class="container">
+
+            <div class="updated">
+                <strong>VersÃ£o resumida:</strong> esta ferramenta Ã© interna e consulta dados da conta de Google Ads da
+                Laundry Lounge para gerar relatÃ³rios e anÃ¡lises com auxÃ­lio de IA. O acesso Ã© controlado pela prÃ³pria
+                Laundry Lounge e sÃ³ pelo proprietÃ¡rio e pessoas autorizadas. Abaixo, os detalhes completos.
+            </div>
+
+            <!-- 1. CONTROLADOR -->
+            <div class="card">
+                <h2>1. Quem Ã© responsÃ¡vel pelo tratamento dos dados</h2>
+                <p>O tratamento dos dados descritos nesta polÃ­tica Ã© realizado por:</p>
+                <p class="call">Laundry Lounge<br>
+                Rua Palamede Milioli, 192 â€“ Sala 2 â€“ Centro, CriciÃºma/SC<br>
+                Contato para privacidade: <span class="pill">lavanderiaLaundryLounge@gmail.com</span></p>
+                <p>Esta ferramenta Ã© uma aplicaÃ§Ã£o <strong>interna</strong> da Laundry Lounge. Ela <strong>nÃ£o Ã© um
+                produto do Google</strong> e nÃ£o Ã© vista, revisada, endossada ou patrocinada pelo Google.</p>
+            </div>
+
+            <!-- 2. DADOS ACESSADOS -->
+            <div class="card">
+                <h2>2. Que dados sÃ£o acessados</h2>
+                <p>Para funcionar, a ferramenta precisa da sua autorizaÃ§Ã£o (via login seguro do Google) para consultar,
+                <strong>somente em modo de leitura</strong>, informaÃ§Ãµes da conta de Google Ads da Laundry Lounge:</p>
+                <h3>Dados da conta de Google Ads</h3>
+                <table>
+                    <thead>
+                        <tr><th>InformaÃ§Ã£o</th><th>Exemplos</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>IdentificaÃ§Ã£o da conta de Google Ads</td><td>ID da conta, nome da conta, moeda, fuso horÃ¡rio</td></tr>
+                        <tr><td>Campanhas</td><td>Nomes, status, orÃ§amentos e estruturas de campanha</td></tr>
+                        <tr><td>Grupos de anÃºncios</td><td>Nomes e segmentaÃ§Ã£o</td></tr>
+                        <tr><td>AnÃºncios</td><td>Textos e formatos dos anÃºncios</td></tr>
+                        <tr><td>MÃ©tricas de desempenho</td><td>ImpressÃµes, cliques, custo, CTR, conversÃµes (quando configuradas)</td></tr>
+                    </tbody>
+                </table>
+                <h3>Dados da sua conta Google</h3>
+                <p>Quando vocÃª autoriza o acesso com uma conta Google, a ferramenta pode ver a <strong>identificaÃ§Ã£o
+                bÃ¡sica</strong> da conta autorizada (ex.: nome e e-mail) para confirmar que o acesso estÃ¡ sendo feito
+                por uma pessoa autorizada pela Laundry Lounge. Esses dados sÃ£o usados apenas para controle de acesso.</p>
+            </div>
+
+            <!-- 3. FINALIDADE -->
+            <div class="card">
+                <h2>3. Para que os dados sÃ£o usados</h2>
+                <ul>
+                    <li><strong>Responder Ã s suas perguntas</strong> sobre o desempenho dos anÃºncios da Laundry Lounge.</li>
+                    <li><strong>Gerar relatÃ³rios e anÃ¡lises internas</strong> de desempenho da conta de Google Ads.</li>
+                    <li><strong>Verificar a identidade do usuÃ¡rio</strong> para garantir que apenas o proprietÃ¡rio e pessoas autorizadas usem a ferramenta.</li>
+                </ul>
+                <p>O acesso Ã© <strong>apenas de consulta (somente leitura)</strong>. A ferramenta <strong>nÃ£o cria, nÃ£o
+                altera e nÃ£o exclui</strong> campanhas, anÃºncios, grupos de anÃºncios, lances, orÃ§amentos ou qualquer
+                outro elemento da sua conta de Google Ads.</p>
+            </div>
+
+            <!-- 4. USO DE IA -->
+            <div class="card">
+                <h2>4. Uso de inteligÃªncia artificial</h2>
+                <p>Para gerar as respostas e anÃ¡lises, a Laundry Lounge utiliza serviÃ§os de inteligÃªncia artificial de
+                terceiros (atualmente a plataforma <strong>Codex</strong>, da OpenAI). Isso significa que:</p>
+                <ul>
+                    <li>Os dados consultados na sua conta de Google Ads <strong>sÃ£o enviados</strong> a serviÃ§os de IA
+                    de terceiros para a geraÃ§Ã£o das respostas e relatÃ³rios.</li>
+                    <li>Essas respostas sÃ£o <strong>revisadas pela equipe da Laundry Lounge</strong> antes de serem
+                    usadas, quando aplicÃ¡vel.</li>
+                    <li>Utilizamos cÃ¡lculos em <strong>unidades mÃ©tricas de desempenho</strong> e tratamos os dados com
+                    cuidado, mas recomendamos confirmar informaÃ§Ãµes crÃ­ticas diretamente no Google Ads.</li>
+                </ul>
+            </div>
+
+            <!-- 5. ARMAZENAMENTO -->
+            <div class="card">
+                <h2>5. Onde os dados ficam armazenados e por quanto tempo</h2>
+<p><span class="call">A ferramenta consulta os dados da conta de Google Ads em tempo real, somente por query do proprietario ou de pessoa autorizada. Os dados consultados NAO sao armazenados nem retidos: a consulta e feita por query direta ao Google Ads, sem copia local, armazenamento ou retencao pela Laundry Lounge.</span></p>
+                <p>AtÃ© a etapa de confirmaÃ§Ã£o, informe como a ferramenta guarda os dados consultados:</p>
+                <ul>
+                    <li>As informaÃ§Ãµes consideradas para a verificaÃ§Ã£o do Google sÃ£o a <strong>descriÃ§Ã£o da ferramenta
+                    (pÃºblico)</strong> e o funcionamento da <strong>tela de autorizaÃ§Ã£o OAuth</strong> â€” pÃ¡ginas de acesso
+                    pÃºblico para a verificaÃ§Ã£o de marca.</li>
+                </ul>
+                <p>Para detalhes de retenÃ§Ã£o e exclusÃ£o, veja as seÃ§Ãµes 7 e 8.</p>
+            </div>
+
+            <!-- 6. COOKIES / ANALYTICS -->
+            <div class="card">
+                <h2>6. Cookies e ferramentas de mediÃ§Ã£o</h2>
+                <p>A pÃ¡gina pÃºblica da ferramenta e o site da Laundry Lounge utilizam o <strong>Google Ads (tag de conversÃ£o)</strong>,
+                incluindo cookies de conversÃ£o do Google. Consulte a polÃ­tica de cookies do site para detalhes. Estes arquivos
+                serÃ£o confirmados antes da publicaÃ§Ã£o.</p>
+            </div>
+
+            <!-- 7. COMPARTILHAMENTO -->
+            <div class="card">
+                <h2>7. Compartilhamento de dados</h2>
+                <p>A Laundry Lounge <strong>nÃ£o vende dados</strong> e nÃ£o utiliza os dados da conta de Google Ads para
+                fins de publicidade alÃ©m do serviÃ§o aqui descrito. Os dados podem ser acessados por:</p>
+                <ul>
+                    <li>Pessoas autorizadas da equipe da Laundry Lounge.</li>
+                    <li>Fornecedores de serviÃ§os de IA e de infraestrutura conforme descrito na seÃ§Ã£o 4.</li>
+                    <li>Autoridades competentes, quando exigido por lei.</li>
+                </ul>
+            </div>
+
+            <!-- 8. SEUS DIREITOS -->
+            <div class="card">
+                <h2>8. Seus direitos e como exercÃª-los</h2>
+                <h3>Revogar o acesso ao Google</h3>
+                <p>VocÃª pode <strong>revogar o acesso</strong> a qualquer momento, em:
+                <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">g.co/accountpermissions</a>,
+                removendo a permissÃ£o da Laundry Lounge Ads Assistant.</p>
+                <h3>Pedir esclarecimentos ou exclusÃ£o</h3>
+                <p>Para dÃºvidas, solicitaÃ§Ãµes de esclarecimento ou de exclusÃ£o de dados, entre em contato pelo e-mail:
+                <span class="pill">lavanderiaLaundryLounge@gmail.com</span></p>
+                <h3>LGPD</h3>
+                <p>No Brasil, vocÃª tambÃ©m pode apresentar reclamaÃ§Ã£o Ã  <strong>ANPD (Autoridade Nacional de ProteÃ§Ã£o de
+                Dados)</strong>.</p>
+            </div>
+
+            <!-- 9. ATUALIZAÃ‡Ã•ES / CONTATO -->
+            <div class="card">
+                <h2>9. AlteraÃ§Ãµes nesta polÃ­tica</h2>
+                <p>Esta polÃ­tica pode ser atualizada periodicamente. A data da versÃ£o vigente serÃ¡ indicada no inÃ­cio
+                desta pÃ¡gina. AlteraÃ§Ãµes relevantes serÃ£o comunicadas por meios adequados.</p>
+                <p>Em caso de dÃºvidas, entre em contato pelo e-mail de privacidade da Laundry Lounge.</p>
+            </div>
+
+            <div class="card" style="text-align:center">
+                <p><strong>DÃºvidas sobre esta ferramenta?</strong> Fale com a Laundry Lounge pelo WhatsApp ou pelo e-mail indicado acima.</p>
+                <a href="https://wa.me/5548988061750" target="_blank" rel="noopener" class="btn">Falar com a Laundry Lounge</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__links">
+                <a href="../">PÃ¡gina inicial</a>
+                <a href="../#servicos">ServiÃ§os</a>
+                <a href="../#planos">Planos</a>
+                <a href="../ferramenta-anuncios/">Ferramenta de AnÃºncios</a>
+                <a href="../politica-de-privacidade-google-ads/">Privacidade</a>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Laundry Lounge. Todos os direitos reservados.</p>
+                <p>Site criado por <a href="https://sites.negociosmart.com.br" target="_blank" rel="noopener">NegÃ³cios Smart</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>Laundry Lounge Ads Assistant — Ferramenta de Anúncios | Laundry Lounge</title>
+    <meta name="description" content="Laundry Lounge Ads Assistant: ferramenta interna da Laundry Lounge para consultar dados da conta de Google Ads e gerar relatórios de desempenho.">
+    <meta name="keywords" content="Laundry Lounge, Google Ads, ferramenta interna, relatórios, anúncios">
+    <link rel="canonical" href="https://lavanderialaundrylounge.com.br/ferramenta-anuncios/">
+    <meta name="theme-color" content="#1a2744">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --blue-900: #0c1b33;
+            --blue-800: #1a2744;
+            --blue-700: #1e3a5f;
+            --blue-600: #2563eb;
+            --blue-400: #60a5fa;
+            --blue-100: #dbeafe;
+            --blue-50: #eff6ff;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-500: #64748b;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --radius: 12px;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        body { font-family: var(--font); color: var(--gray-800); background: var(--white); line-height: 1.6; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+        /* NAVBAR */
+        .navbar { background: var(--blue-900); color: var(--white); padding: 18px 0; }
+        .navbar__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .navbar__logo { display: flex; align-items: center; gap: 10px; color: var(--white); text-decoration: none; font-weight: 700; font-size: 1.15rem; }
+        .navbar__logo-img { height: 34px; width: auto; }
+        .accent { color: var(--blue-400); }
+        .navbar__cta { color: var(--white); text-decoration: none; font-size: .92rem; border: 1px solid rgba(255,255,255,.4); padding: 8px 16px; border-radius: var(--radius); transition: .2s; }
+        .navbar__cta:hover { background: rgba(255,255,255,.1); }
+        /* HERO */
+        .page-hero { background: linear-gradient(135deg, var(--blue-900), var(--blue-700)); color: var(--white); padding: 64px 0 56px; }
+        .page-hero__badge { display: inline-block; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28); color: var(--blue-100); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; padding: 6px 14px; border-radius: 999px; margin-bottom: 16px; }
+        .page-hero h1 { font-size: 2.1rem; line-height: 1.18; font-weight: 800; margin-bottom: 14px; }
+        .page-hero p { font-size: 1.05rem; color: var(--blue-100); max-width: 720px; }
+        .notice { background: rgba(255,255,255,.1); border-left: 4px solid var(--blue-400); padding: 14px 18px; border-radius: 8px; margin-top: 22px; font-size: .95rem; color: var(--blue-100); }
+        /* CONTEÚDO */
+        .content { padding: 48px 0 64px; }
+        .card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px; margin-bottom: 28px; }
+        .card h2 { color: var(--blue-800); font-size: 1.3rem; margin-bottom: 14px; }
+        .card ul { margin: 10px 0 0 20px; }
+        .card li { margin-bottom: 8px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 6px; }
+        .grid .mini { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 16px; }
+        .grid .mini h3 { font-size: .95rem; color: var(--blue-700); margin-bottom: 6px; }
+        .grid .mini p { font-size: .88rem; color: var(--gray-500); }
+        /* LISTA DE DADOS CONSULTADOS */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: .92rem; }
+        th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--gray-200); }
+        th { background: var(--blue-50); color: var(--blue-700); font-weight: 600; }
+        .pill { display: inline-block; background: var(--gray-100); color: var(--gray-700); font-size: .78rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+        .pill--ok { background: #dcfce7; color: #166534; }
+        /* CALL TO ACTION */
+        .cta { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: var(--radius); text-align: center; padding: 32px 24px; margin-top: 12px; }
+        .cta a { color: var(--blue-600); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; }
+        .cta a:hover { border-bottom-color: var(--blue-600); }
+        /* FOOTER */
+        .footer { background: var(--blue-900); color: var(--gray-300); padding: 40px 0 20px; margin-top: 8px; }
+        .footer__inner { display: flex; flex-direction: column; gap: 22px; }
+        .footer__links { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+        .footer__links a { color: var(--blue-100); text-decoration: none; font-size: .92rem; }
+        .footer__links a:hover { color: var(--white); }
+        .footer__bottom { border-top: 1px solid rgba(255,255,255,.12); padding-top: 16px; margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: .82rem; justify-content: space-between; }
+        .footer__bottom a { color: var(--blue-100); text-decoration: none; }
+        .branding-ns a { color: var(--blue-400); text-decoration: none; }
+        @media (max-width: 600px) {
+            .page-hero h1 { font-size: 1.6rem; }
+            .navbar__cta { display: none; }
+            th, td { padding: 8px 8px; font-size: .85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="container navbar__inner">
+            <a href="../" class="navbar__logo">
+                <span class="logo-text">Laundry <span class="accent">Lounge</span></span>
+            </a>
+            <a href="../" class="navbar__cta">Voltar ao site</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="page-hero__badge">Ferramenta Interna</span>
+            <h1>Laundry Lounge Ads Assistant</h1>
+            <p>Ferramenta interna da Laundry Lounge para consultar dados da conta de Google Ads e gerar relatórios de desempenho dos anúncios, com auxílio de inteligência artificial.</p>
+            <div class="notice">
+                A Laundry Lounge Ads Assistant é uma ferramenta <strong>interna</strong> da Laundry Lounge,
+                utilizada pelo proprietário e por pessoas autorizadas da equipe. Ela é de consulta (<strong>somente leitura</strong>).
+                Esta ferramenta <strong>não é um produto do Google</strong> — não é oficial, não é certificada e não é
+                patrocinada pelo Google.
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTEÚDO -->
+    <main class="content">
+        <div class="container">
+
+            <div class="card">
+                <h2>O que é?</h2>
+                <p>A Laundry Lounge Ads Assistant é uma ferramenta interna e gratuita, criada pela própria Laundry Lounge,
+                que consulta a identificação da conta de Google Ads da empresa e gera respostas e relatórios de
+                desempenho dos anúncios com o auxílio de inteligência artificial (IA).</p>
+                <ul>
+                    <li>É usada apenas pela <strong>equipe autorizada da Laundry Lounge</strong>.</li>
+                    <li>Acessa os dados somente com a autorização do proprietário da conta de Google Ads.</li>
+                    <li>Serve para <strong>leitura e análise</strong> — responder perguntas e produzir relatórios e análises internas.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>O que ela consulta</h2>
+                <p>A ferramenta acessa informações da conta de Google Ads autorizada pela Laundry Lounge, incluindo:</p>
+                <table>
+                    <thead>
+                        <tr><th>Dado consultado</th><th>Finalidade</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Identificação da conta de Google Ads</td><td>Confirmar qual conta está autorizada</td></tr>
+                        <tr><td>Campanhas</td><td>Analisar desempenho de cada campanha</td></tr>
+                        <tr><td>Grupos de anúncios</td><td>Análise de desempenho detalhada</td></tr>
+                        <tr><td>Anúncios</td><td>Análise de desempenho por anúncio</td></tr>
+                        <tr><td>Métricas (impressões, cliques, custo, conversões etc.)</td><td>Relatórios e análises de desempenho</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>O que ela <span style="color:#dc2626;">não</span> faz</h2>
+                <ul>
+                    <li>Não cria, altera nem exclui campanhas.</li>
+                    <li>Não cria, altera nem exclui anúncios.</li>
+                    <li>Não altera lances nem orçamentos.</li>
+                    <li>Não realiza compras nem cobranças.</li>
+                    <li>Não interfere em nenhuma conta além da autorizada pela Laundry Lounge.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Quem pode usar</h2>
+                <div class="grid">
+                    <div class="mini">
+                        <h3>Proprietário</h3>
+                        <p>Pessoa física responsável pela conta de Google Ads da Laundry Lounge.</p>
+                    </div>
+                    <div class="mini">
+                        <h3>Equipe autorizada</h3>
+                        <p>Pessoas autorizadas pela Laundry Lounge a acessar e analisar os dados de anúncios.</p>
+                    </div>
+                    <div class="mini">
+                        <h3>Visitantes do site</h3>
+                        <p><span class="pill">Sem acesso</span> — não é possível usar esta ferramenta sem autorização.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Como funciona o acesso</h2>
+                <p>A ferramenta exige autorização por meio de uma conta Google autorizada pelo proprietário da Laundry Lounge.
+                O acesso é feito com a própria autorização segura do Google. <strong>Nenhuma senha ou chave de acesso é
+                armazenada neste site.</strong></p>
+            </div>
+
+            <div class="cta">
+                <p>Saiba mais sobre o tratamento dos dados na nossa
+                <a href="../politica-de-privacidade-google-ads/">Política de Privacidade</a>.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__links">
+                <a href="../">Página inicial</a>
+                <a href="../#servicos">Serviços</a>
+                <a href="../#planos">Planos</a>
+                <a href="../ferramenta-anuncios/">Ferramenta de Anúncios</a>
+                <a href="../politica-de-privacidade-google-ads/">Privacidade</a>
+            </div>
+            <p>Laundry Lounge Ads Assistant é uma ferramenta interna. Não é um produto oficial, certificado ou patrocinado pelo Google.</p>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Laundry Lounge. Todos os direitos reservados.</p>
+                <p class="branding-ns">Site criado por <a href="https://sites.negociosmart.com.br" target="_blank" rel="noopener">Negócios Smart</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
