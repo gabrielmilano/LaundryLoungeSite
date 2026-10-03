@@ -6,7 +6,9 @@
 {% include head-seo.html %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Fonte sem bloquear a renderização: o texto aparece com a fonte do sistema e troca quando a Inter chega -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/servico.css">
     <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -20,7 +22,7 @@
     <header class="navbar" id="navbar">
         <div class="container navbar__inner">
             <a href="/" class="navbar__logo">
-                <img src="/assets/img/logo.webp" alt="Laundry Lounge" class="navbar__logo-img" width="54" height="36">
+                <img src="/assets/img/logo.webp" alt="" class="navbar__logo-img" width="54" height="36">
                 <span class="logo-text">Laundry <span class="accent">Lounge</span></span>
             </a>
             <nav class="navbar__links">

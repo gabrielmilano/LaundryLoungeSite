@@ -3,6 +3,15 @@
    Complementa style.css — mesmas cores, fontes e botões da home
    ======================================== */
 
+/* Contraste mínimo 4.5:1 nas etiquetas e no rodapé desta página */
+.pagina-servico .section-tag {
+    color: #1d4ed8;
+}
+
+.pagina-servico .footer__bottom p {
+    color: #94a3b8;
+}
+
 /* === HERO === */
 .svc-hero {
     background: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-600) 100%);
