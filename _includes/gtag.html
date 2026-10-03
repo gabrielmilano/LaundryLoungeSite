@@ -1,7 +1,6 @@
 {%- assign rastreamento = site.data.negocio.rastreamento -%}
 {%- assign ga4_id = rastreamento.ga4_id | strip %}
     <!-- Google tag — Google Ads {{ rastreamento.google_ads_id }}{% if ga4_id != "" %} + GA4 {{ ga4_id }}{% endif %} -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ rastreamento.google_ads_id }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -10,4 +9,13 @@
 {%- if ga4_id != "" %}
         gtag('config', '{{ ga4_id }}');
 {%- endif %}
+
+        // A tag só baixa depois que a página carrega, para não disputar banda com o conteúdo.
+        // Os comandos acima (e cliques feitos antes disso) ficam na fila do dataLayer e são enviados quando ela chega.
+        window.addEventListener('load', function () {
+            var tag = document.createElement('script');
+            tag.async = true;
+            tag.src = 'https://www.googletagmanager.com/gtag/js?id={{ rastreamento.google_ads_id }}';
+            document.head.appendChild(tag);
+        });
     </script>

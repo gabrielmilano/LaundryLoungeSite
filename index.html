@@ -13,7 +13,8 @@ last_modified_at: 2026-10-03
 {% include head-seo.html %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="favicon.ico" sizes="48x48">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon.png">
@@ -28,7 +29,7 @@ last_modified_at: 2026-10-03
     <header class="navbar" id="navbar">
         <div class="container navbar__inner">
             <a href="#" class="navbar__logo">
-                <img src="assets/img/logo.webp" alt="" class="navbar__logo-img" width="54" height="36">
+                <img src="assets/img/logo-sm.webp" srcset="assets/img/logo-sm.webp 112w, assets/img/logo.webp 240w" sizes="54px" alt="" class="navbar__logo-img" width="54" height="36">
                 <span class="logo-text">Laundry <span class="accent">Lounge</span></span>
             </a>
             <nav class="navbar__links">
@@ -64,15 +65,15 @@ last_modified_at: 2026-10-03
         </div>
         <div class="container hero__content">
             <div class="hero__text">
-                <span class="hero__badge" data-animate>Lavanderia Especializada</span>
-                <h1 class="hero__title" data-animate>
+                <span class="hero__badge">Lavanderia Especializada</span>
+                <h1 class="hero__title">
                     Lavanderia no Centro de Criciúma: você deixa, a gente cuida
                 </h1>
-                <p class="hero__subtitle" data-animate>
+                <p class="hero__subtitle">
                     Lavagem profissional com produtos de alta qualidade. Atendemos pessoas e empresas
                     com cuidado e excelência. Agende sua coleta agora.
                 </p>
-                <div class="hero__actions" data-animate>
+                <div class="hero__actions">
                     <a href="https://wa.me/5548988061750?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20os%20servi%C3%A7os!" class="btn btn--white btn--lg" target="_blank" rel="noopener">
                         Agendar Coleta
                     </a>
@@ -122,7 +123,7 @@ last_modified_at: 2026-10-03
             <div class="services__grid">
                 <!-- Edredons & Cobertores -->
                 <div class="service-card" data-animate>
-                    <img src="assets/img/logo.webp" alt="" class="service-card__icon-img" width="56" height="56" loading="lazy">
+                    <img src="assets/img/logo-sm.webp" srcset="assets/img/logo-sm.webp 112w, assets/img/logo.webp 240w" sizes="56px" alt="" class="service-card__icon-img" width="56" height="56" loading="lazy">
                     <h3 class="service-card__title">Edredons & Cobertores</h3>
                     <ul class="service-card__features">
                         <li>Lavação especializada</li>
@@ -137,7 +138,7 @@ last_modified_at: 2026-10-03
                 </div>
                 <!-- Roupas do dia a dia & Roupas de festa -->
                 <div class="service-card" data-animate>
-                    <img src="assets/img/logo.webp" alt="" class="service-card__icon-img" width="56" height="56" loading="lazy">
+                    <img src="assets/img/logo-sm.webp" srcset="assets/img/logo-sm.webp 112w, assets/img/logo.webp 240w" sizes="56px" alt="" class="service-card__icon-img" width="56" height="56" loading="lazy">
                     <h3 class="service-card__title">Roupas do dia a dia & Roupas de festa</h3>
                     <ul class="service-card__features">
                         <li>Camisas e Camisetas</li>
@@ -153,7 +154,7 @@ last_modified_at: 2026-10-03
                 </div>
                 <!-- Tapetes, Cortinas & Acessórios -->
                 <div class="service-card" data-animate>
-                    <img src="assets/img/logo.webp" alt="" class="service-card__icon-img" width="56" height="56" loading="lazy">
+                    <img src="assets/img/logo-sm.webp" srcset="assets/img/logo-sm.webp 112w, assets/img/logo.webp 240w" sizes="56px" alt="" class="service-card__icon-img" width="56" height="56" loading="lazy">
                     <h3 class="service-card__title">Tapetes, Cortinas & Acessórios</h3>
                     <ul class="service-card__features">
                         <li><a href="/lavagem-de-tapetes-criciuma">Lavagem de tapetes</a></li>
