@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Página não encontrada | Laundry Lounge</title>
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        .hero.notfound { min-height: 100vh; min-height: 100dvh; }
+        .notfound .hero__content { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+        .notfound__code {
+            font-size: clamp(5rem, 18vw, 9rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: rgba(255, 255, 255, 0.18);
+            margin-bottom: 12px;
+        }
+        .notfound .hero__subtitle { margin-left: auto; margin-right: auto; }
+        .notfound .hero__actions { justify-content: center; }
+        @media (prefers-reduced-motion: reduce) {
+            .notfound .bubble { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container navbar__inner">
+            <a href="/" class="navbar__logo">
+                <img src="/assets/img/logo.webp" alt="Laundry Lounge" class="navbar__logo-img" width="54" height="36">
+                <span class="logo-text">Laundry <span class="accent">Lounge</span></span>
+            </a>
+        </div>
+    </header>
+
+    <main class="hero notfound">
+        <div class="bubbles" aria-hidden="true">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+        <div class="container hero__content">
+            <div class="hero__text">
+                <p class="notfound__code" aria-hidden="true">404</p>
+                <span class="hero__badge">Página não encontrada</span>
+                <h1 class="hero__title">Ops! Essa página foi para a lavagem.</h1>
+                <p class="hero__subtitle">
+                    O endereço que você acessou não existe ou mudou de lugar.
+                    Volte para o início ou fale com a gente pelo WhatsApp.
+                </p>
+                <div class="hero__actions">
+                    <a href="/" class="btn btn--white btn--lg">Voltar ao início</a>
+                    <a href="https://wa.me/5548988061750?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20saber%20mais!" class="btn btn--outline btn--lg" target="_blank" rel="noopener">
+                        Falar no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
