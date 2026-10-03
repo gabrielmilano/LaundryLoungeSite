@@ -1,0 +1,297 @@
+---
+layout: servico
+permalink: /lavagem-de-tapetes-criciuma
+title: "Lavagem de Tapetes em Criciúma | Busca e Entrega | Laundry Lounge"
+description: "Lavagem de tapetes em Criciúma com busca e entrega. Lavamos e secamos em máquina, sem bagunça na sua casa. Peça orçamento pelo WhatsApp."
+breadcrumb: "Lavagem de tapetes"
+servico_evento: tapete
+whatsapp_url: "https://wa.me/5548988061750?text=Ol%C3%A1!%20Quero%20or%C3%A7amento%20para%20lavagem%20de%20tapete."
+last_modified_at: 2026-10-03
+# Perguntas frequentes. "requer" = marcador de _data/negocio.yml sem o qual a pergunta fica escondida.
+# {prazo}, {bairros} e {preco} são trocados pelo valor preenchido.
+faq:
+  - pergunta: "Quanto tempo demora para lavar um tapete?"
+    resposta: "O prazo é de {prazo} a partir da retirada. Tapetes grandes ou muito sujos podem levar um pouco mais; avisamos no orçamento."
+    requer: prazo
+  - pergunta: "Vocês lavam tapete com xixi de cachorro ou gato?"
+    resposta: "Sim. Fazemos lavagem completa com produto para eliminar o odor e secamos em máquina."
+    requer: lava_pet
+  - pergunta: "Em quais bairros vocês buscam e entregam?"
+    resposta: "Buscamos e entregamos em {bairros}. Se você está em outro bairro, chame no WhatsApp que verificamos."
+    requer: bairros
+  - pergunta: "Como é calculado o preço?"
+    resposta: "Pelo tamanho em metros quadrados, a partir de R$ {preco}/m². Mande foto e medidas pelo WhatsApp para receber o valor exato."
+    requer: preco
+  - pergunta: "Posso deixar o tapete direto na loja?"
+    resposta: "Sim. A loja fica na Rua Palamede Milioli, 192, Sala 2, Centro de Criciúma, de segunda a sexta das 8h30 às 19h (fechado das 12h às 13h30) e sábado das 8h30 às 12h."
+---
+{%- assign e = site.data.negocio.empresa -%}
+{%- assign t = site.data.negocio.servicos.tapetes -%}
+{%- assign prazo = t.prazo | strip -%}
+{%- assign preco = t.preco | strip -%}
+{%- assign bairros = t.bairros | strip -%}
+{%- assign foto_hero = t.foto_hero.src | strip -%}
+{%- assign n_tipos = t.tipos | size -%}
+{%- assign n_antes_depois = t.antes_depois | size -%}
+{%- assign n_avaliacoes = t.avaliacoes | size -%}
+{%- assign url_pagina = page.url | absolute_url -%}
+
+{%- comment -%} Perguntas visíveis: só as que têm o marcador preenchido {%- endcomment -%}
+{%- assign faq_visiveis = "" | split: "" -%}
+{%- for item in page.faq -%}
+  {%- assign mostrar = true -%}
+  {%- case item.requer -%}
+    {%- when "prazo" -%}{%- if prazo == "" -%}{%- assign mostrar = false -%}{%- endif -%}
+    {%- when "bairros" -%}{%- if bairros == "" -%}{%- assign mostrar = false -%}{%- endif -%}
+    {%- when "preco" -%}{%- if preco == "" -%}{%- assign mostrar = false -%}{%- endif -%}
+    {%- when "lava_pet" -%}{%- unless t.lava_pet == true -%}{%- assign mostrar = false -%}{%- endunless -%}
+  {%- endcase -%}
+  {%- if mostrar -%}{%- assign faq_visiveis = faq_visiveis | push: item -%}{%- endif -%}
+{%- endfor %}
+
+    <!-- 1. HERO -->
+    <section class="svc-hero">
+        <div class="container svc-hero__inner{% if foto_hero != '' %} svc-hero__inner--foto{% endif %}">
+            <div class="svc-hero__text">
+                <nav class="breadcrumb" aria-label="Você está em">
+                    <ol>
+                        <li><a href="/">Início</a></li>
+                        <li aria-current="page">{{ page.breadcrumb }}</li>
+                    </ol>
+                </nav>
+                <h1 class="svc-hero__title">Lavagem de tapetes em Criciúma, com busca e entrega</h1>
+                <p class="svc-hero__subtitle">Lavamos, secamos em máquina e devolvemos seu tapete limpo{% if prazo != "" %} em {{ prazo }}{% endif %}. Sem bagunça em casa.</p>
+                <div class="svc-hero__actions">
+                    <a href="{{ page.whatsapp_url }}" class="btn btn--white btn--lg" target="_blank" rel="noopener" data-servico="tapete" data-posicao="hero">Pedir orçamento no WhatsApp</a>
+                    <a href="tel:{{ e.telefone_link }}" class="btn btn--outline btn--lg svc-ligar" data-servico="tapete" data-posicao="hero">Ligar {{ e.telefone }}</a>
+                </div>
+            </div>
+{%- if foto_hero != "" %}
+            <div class="svc-hero__media">
+                <img src="{{ foto_hero }}" alt="{{ t.foto_hero.alt | escape }}" width="{{ t.foto_hero.largura }}" height="{{ t.foto_hero.altura }}" fetchpriority="high">
+            </div>
+{%- endif %}
+        </div>
+    </section>
+
+    <!-- 2. FAIXA DE CONFIANÇA -->
+    <section class="svc-trust" aria-label="Por que escolher a Laundry Lounge">
+        <ul class="container svc-trust__list">
+            <li class="svc-trust__nota"><a href="{{ e.google_perfil_url }}" target="_blank" rel="noopener"><strong>{{ e.google_nota }}★</strong> · {{ e.google_avaliacoes }} avaliações no Google</a></li>
+            <li>Centro de Criciúma</li>
+            <li>Busca e entrega</li>
+            <li>PIX e cartão</li>
+        </ul>
+    </section>
+
+    <!-- 3. COMO FUNCIONA -->
+    <section class="how-it-works svc-section" id="como-funciona">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Passo a passo</span>
+                <h2 class="section-title">Como funciona</h2>
+                <p class="section-desc svc-lead">A Laundry Lounge faz a lavagem de tapete em Criciúma direto da loja no Centro. O tapete é lavado e seco em máquina: você não precisa ocupar o quintal nem esperar dias até ele secar no varal.</p>
+            </div>
+            <ol class="steps steps--3">
+                <li class="step">
+                    <div class="step__number">01</div>
+                    <h3 class="step__title">Mande foto e medida</h3>
+                    <p class="step__text">Mande foto e medida do tapete no WhatsApp. Com isso a gente avalia o tipo de tapete e passa o orçamento.</p>
+                </li>
+                <li class="step">
+                    <div class="step__number">02</div>
+                    <h3 class="step__title">Buscamos ou você deixa na loja</h3>
+                    <p class="step__text">Buscamos na sua casa ou você deixa na loja, na {{ e.rua }}, {{ e.bairro }}.</p>
+                </li>
+                <li class="step">
+                    <div class="step__number">03</div>
+                    <h3 class="step__title">Devolvemos limpo e seco</h3>
+                    <p class="step__text">Devolvemos limpo e seco{% if prazo != "" %} em {{ prazo }}{% endif %}, pronto para voltar para o lugar.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+{%- if n_tipos > 0 %}
+
+    <!-- 4. O QUE LAVAMOS -->
+    <section class="svc-section svc-section--alt" id="o-que-lavamos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Tipos de tapete</span>
+                <h2 class="section-title">O que lavamos</h2>
+                <p class="section-desc svc-lead">Cada tapete é tratado de acordo com o tipo e a necessidade, como fazemos com todas as peças da loja.</p>
+            </div>
+            <ul class="svc-tipos">
+{%- for tipo in t.tipos %}
+                <li>{{ tipo }}</li>
+{%- endfor %}
+            </ul>
+            <p class="svc-nota">Tem outro tipo de tapete? Mande uma foto no WhatsApp que a gente avalia.</p>
+        </div>
+    </section>
+{%- endif %}
+{%- if preco != "" %}
+
+    <!-- 5. PREÇO -->
+    <section class="svc-section" id="preco">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Preço</span>
+                <h2 class="section-title">Preço da lavagem de tapete</h2>
+            </div>
+            <div class="svc-preco">
+                <p class="svc-preco__valor">A partir de R$ {{ preco }}/{{ t.preco_unidade }}</p>
+                <p class="svc-preco__texto">O valor final depende do tamanho e do tipo do tapete. Mande uma foto e as medidas no WhatsApp para orçamento exato.</p>
+            </div>
+        </div>
+    </section>
+{%- endif %}
+{%- if n_antes_depois > 0 %}
+
+    <!-- 6. ANTES E DEPOIS -->
+    <section class="svc-section svc-section--alt" id="antes-e-depois">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Resultados</span>
+                <h2 class="section-title">Antes e depois</h2>
+            </div>
+            <div class="svc-ad">
+{%- for par in t.antes_depois %}
+                <figure class="svc-ad__par">
+                    <div class="svc-ad__fotos">
+                        <div class="svc-ad__foto">
+                            <img src="{{ par.antes }}" alt="{{ par.alt | escape }} antes da lavagem na Laundry Lounge" width="{{ par.largura }}" height="{{ par.altura }}" loading="lazy">
+                            <span class="svc-ad__rotulo">Antes</span>
+                        </div>
+                        <div class="svc-ad__foto">
+                            <img src="{{ par.depois }}" alt="{{ par.alt | escape }} limpo após lavagem na Laundry Lounge em Criciúma" width="{{ par.largura }}" height="{{ par.altura }}" loading="lazy">
+                            <span class="svc-ad__rotulo">Depois</span>
+                        </div>
+                    </div>
+                    <figcaption>{{ par.alt }}</figcaption>
+                </figure>
+{%- endfor %}
+            </div>
+        </div>
+    </section>
+{%- endif %}
+{%- if n_avaliacoes > 0 %}
+
+    <!-- 7. AVALIAÇÕES -->
+    <section class="svc-section" id="avaliacoes">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Avaliações no Google</span>
+                <h2 class="section-title">O que dizem os clientes</h2>
+            </div>
+            <div class="svc-reviews">
+{%- for a in t.avaliacoes %}
+                <blockquote class="svc-review">
+                    <p>“{{ a.texto }}”</p>
+                    <footer>{{ a.nome }} · <a href="{{ a.url | default: e.google_perfil_url }}" target="_blank" rel="noopener">ver no Google</a></footer>
+                </blockquote>
+{%- endfor %}
+            </div>
+        </div>
+    </section>
+{%- endif %}
+{%- if faq_visiveis.size > 0 %}
+
+    <!-- 8. PERGUNTAS FREQUENTES -->
+    <section class="svc-section svc-section--alt" id="perguntas">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Dúvidas</span>
+                <h2 class="section-title">Perguntas frequentes</h2>
+            </div>
+            <div class="svc-faq">
+{%- for item in faq_visiveis %}
+{%- assign resposta = item.resposta | replace: "{prazo}", prazo | replace: "{bairros}", bairros | replace: "{preco}", preco %}
+                <details class="svc-faq__item">
+                    <summary>{{ item.pergunta }}</summary>
+                    <p>{{ resposta }}</p>
+                </details>
+{%- endfor %}
+            </div>
+        </div>
+    </section>
+{%- endif %}
+
+    <!-- 9. ÁREA ATENDIDA -->
+    <section class="map-section svc-section" id="area-atendida">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Localização</span>
+{%- if bairros != "" %}
+                <h2 class="section-title">Área atendida</h2>
+                <p class="section-desc svc-lead">Buscamos e entregamos em: {{ bairros }}.</p>
+{%- else %}
+                <h2 class="section-title">Onde fica a loja</h2>
+{%- endif %}
+                <p class="section-desc svc-lead">{{ e.endereco_completo }}</p>
+            </div>
+            <div class="map-wrapper">
+                <iframe src="{{ e.mapa_embed_url }}" title="Mapa da Lavanderia Laundry Lounge no Centro de Criciúma" width="100%" height="400" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. CHAMADA FINAL -->
+    <section class="cta-final">
+        <div class="container cta-final__content">
+            <h2 class="cta-final__title">Seu tapete limpo, sem bagunça em casa</h2>
+            <p class="cta-final__text">Mande uma foto e as medidas do tapete no WhatsApp e receba o orçamento.</p>
+            <div class="cta-final__actions">
+                <a href="{{ page.whatsapp_url }}" class="btn btn--white btn--lg" target="_blank" rel="noopener" data-servico="tapete" data-posicao="final">Pedir orçamento no WhatsApp</a>
+                <a href="tel:{{ e.telefone_link }}" class="btn btn--outline btn--lg svc-ligar" data-servico="tapete" data-posicao="final">Ligar {{ e.telefone }}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DADOS ESTRUTURADOS -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Lavagem de tapetes",
+      "serviceType": "Lavagem de tapetes",
+      "provider": { "@id": "{{ site.url }}/#empresa" },
+      "areaServed": { "@type": "City", "name": "Criciúma" },
+      "url": "{{ url_pagina }}"
+{%- if preco != "" %},
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "BRL",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": {{ preco | remove: "." | replace: ",", "." | jsonify }},
+          "unitText": {{ t.preco_unidade | jsonify }}
+        }
+      }
+{%- endif %}
+    }
+    </script>
+{%- if faq_visiveis.size > 0 %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+{%- for item in faq_visiveis %}
+{%- assign resposta = item.resposta | replace: "{prazo}", prazo | replace: "{bairros}", bairros | replace: "{preco}", preco %}
+        { "@type": "Question", "name": {{ item.pergunta | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ resposta | jsonify }} } }{% unless forloop.last %},{% endunless %}
+{%- endfor %}
+      ]
+    }
+    </script>
+{%- endif %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "{{ site.url }}/" },
+        { "@type": "ListItem", "position": 2, "name": {{ page.breadcrumb | jsonify }}, "item": "{{ url_pagina }}" }
+      ]
+    }
+    </script>

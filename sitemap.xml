@@ -1,15 +1,21 @@
+---
+layout: null
+sitemap: false
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- comment -%}
+  Gerado pelo Jekyll: entra toda página com front matter, exceto as marcadas
+  com "sitemap: false". Páginas sem front matter (ferramenta de anúncios,
+  política de privacidade, 404) ficam de fora. lastmod = last_modified_at.
+{%- endcomment -%}
+{%- assign paginas = site.html_pages | where_exp: "p", "p.sitemap != false" | sort: "url" %}
+{%- for p in paginas %}
   <url>
-    <loc>https://lavanderialaundrylounge.com.br/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <loc>{{ p.url | absolute_url | xml_escape }}</loc>
+{%- if p.last_modified_at %}
+    <lastmod>{{ p.last_modified_at | date: "%Y-%m-%d" }}</lastmod>
+{%- endif %}
   </url>
-  <url>
-    <loc>https://lavanderialaundrylounge.com.br/ferramenta-anuncios/</loc>
-    <lastmod>2026-10-03</lastmod>
-  </url>
-  <url>
-    <loc>https://lavanderialaundrylounge.com.br/politica-de-privacidade-google-ads/</loc>
-    <lastmod>2026-10-03</lastmod>
-  </url>
+{%- endfor %}
 </urlset>

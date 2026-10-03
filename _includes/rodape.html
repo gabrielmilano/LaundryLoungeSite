@@ -1,0 +1,44 @@
+{%- assign e = site.data.negocio.empresa -%}
+{%- capture cep_inteiro %}<span style="white-space: nowrap">{{ e.cep }}</span>{% endcapture -%}
+{%- if page.url == "/" -%}{%- assign inicio = "" -%}{%- else -%}{%- assign inicio = "/" -%}{%- endif -%}
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <a href="{% if page.url == '/' %}#{% else %}/{% endif %}" class="footer__logo">
+                    <img src="/assets/img/logo-rodape.webp" alt="Laundry Lounge" class="footer__logo-img" width="47" height="36" loading="lazy">
+                    <span class="logo-text">Laundry <span class="accent">Lounge</span></span>
+                </a>
+                <p class="footer__tagline">Lavanderia especializada em edredons, toalhas e roupas.</p>
+                <p class="footer__contact-info">
+                    &#128205; {{ e.endereco_completo | replace: e.cep, cep_inteiro }}<br>
+                    &#128222; <a href="tel:{{ e.telefone_link }}">{{ e.telefone }}</a>
+                </p>
+            </div>
+            <div class="footer__links">
+                <h2 class="footer__heading">Links</h2>
+                <a href="{{ inicio }}#servicos">Serviços</a>
+                <a href="/lavagem-de-tapetes-criciuma">Lavagem de tapetes</a>
+                <a href="{{ inicio }}#como-funciona">Como Funciona</a>
+                <a href="{{ inicio }}#diferenciais">Diferenciais</a>
+                <a href="{{ inicio }}#faq">FAQ</a>
+                <a href="/politica-de-privacidade-google-ads/">Privacidade</a>
+                <a href="{{ e.instagram_url }}" target="_blank" rel="noopener">Instagram</a>
+                <a href="{{ e.facebook_url }}" target="_blank" rel="noopener">Facebook</a>
+            </div>
+            <div class="footer__links">
+                <h2 class="footer__heading">Horários</h2>
+{%- for linha in e.horario_linhas %}
+                <p>{{ linha }}</p>
+{%- endfor %}
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 {{ e.nome }}. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- BRANDING NEGÓCIOS SMART -->
+    <div class="branding-ns">
+        <p>Site criado por <a href="https://sites.negociosmart.com.br" target="_blank" rel="noopener">Negócios Smart</a></p>
+    </div>

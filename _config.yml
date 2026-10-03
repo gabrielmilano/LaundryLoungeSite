@@ -1,0 +1,10 @@
+# Configuração do Jekyll (o GitHub Pages monta o site com ele a cada push no main).
+# Dados do negócio e marcadores pendentes ficam em _data/negocio.yml.
+
+url: "https://lavanderialaundrylounge.com.br"
+baseurl: ""
+lang: pt-BR
+timezone: America/Sao_Paulo
+
+exclude:
+  - "*.docx"

@@ -4,7 +4,13 @@
  * Este arquivo expõe funções utilitárias para enviar eventos de conversão
  * ao Google Ads. Ele também registra listeners automáticos para:
  *   - Cliques em links WhatsApp (evento "whatsapp_click")
+ *   - Cliques em links tel: (evento "phone_click")
  *   - Envio de formulário de contato (evento "form_submit")
+ *
+ * Links com data-servico / data-posicao enviam esses valores como parâmetros
+ * "servico" e "posicao" (ex.: servico = "tapete", posicao = "hero" | "final").
+ * Os eventos vão para o GA4 quando o ID estiver preenchido em
+ * _data/negocio.yml (rastreamento.ga4_id).
  *
  * Para ativar uma conversão, substitua o placeholder pelo Conversion Label
  * correspondente no Google Ads.
@@ -60,6 +66,11 @@ const GoogleAdsTracking = (() => {
             send('whatsapp_click', extra);
         },
 
+        /** Envia evento de clique em link de telefone. */
+        phoneClick(extra) {
+            send('phone_click', extra);
+        },
+
         /** Dispara conversão de formulário enviado. */
         formSubmit(extra) {
             conversion('form_submit', extra);
@@ -90,12 +101,25 @@ const GoogleAdsTracking = (() => {
 // ── Listeners automáticos ───────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Parâmetros do evento a partir do link (data-servico / data-posicao)
+    const eventParams = (link) => {
+        const params = { link_url: link.href };
+        if (link.dataset.servico) params.servico = link.dataset.servico;
+        if (link.dataset.posicao) params.posicao = link.dataset.posicao;
+        return params;
+    };
+
     // WhatsApp clicks (qualquer link wa.me)
     document.querySelectorAll('a[href*="wa.me/"]').forEach(link => {
         link.addEventListener('click', () => {
-            GoogleAdsTracking.whatsappClick({
-                link_url: link.href,
-            });
+            GoogleAdsTracking.whatsappClick(eventParams(link));
+        });
+    });
+
+    // Cliques em telefone
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', () => {
+            GoogleAdsTracking.phoneClick(eventParams(link));
         });
     });
 

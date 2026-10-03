@@ -12,6 +12,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <script>
+        // O GitHub Pages não redireciona barra final: /pagina/ -> /pagina
+        (function () {
+            var caminho = location.pathname;
+            if (caminho.length > 1 && caminho.slice(-1) === '/') {
+                location.replace(caminho.replace(/\/+$/, '') + location.search + location.hash);
+            }
+        })();
+    </script>
     <style>
         .hero.notfound { min-height: 100vh; min-height: 100dvh; }
         .notfound .hero__content { grid-template-columns: 1fr; justify-items: center; text-align: center; }

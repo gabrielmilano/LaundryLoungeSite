@@ -474,7 +474,8 @@ img { max-width: 100%; display: block; }
     flex-shrink: 0;
 }
 
-.hero__card-step-text h4 {
+.hero__card-step-text h4,
+.hero__card-step-text .hero__card-step-name {
     font-size: 0.95rem;
     font-weight: 700;
     color: var(--gray-800);
@@ -614,6 +615,17 @@ img { max-width: 100%; display: block; }
     color: var(--blue-600);
     font-weight: 700;
     font-size: 0.85rem;
+}
+
+.service-card__features a {
+    color: var(--blue-600);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.service-card__features a:hover {
+    color: var(--blue-700);
 }
 
 /* === HOW IT WORKS === */
@@ -1094,7 +1106,8 @@ img { max-width: 100%; display: block; }
     line-height: 2;
 }
 
-.footer__links h4 {
+.footer__links h4,
+.footer__links .footer__heading {
     font-size: 0.95rem;
     font-weight: 700;
     margin-bottom: 16px;

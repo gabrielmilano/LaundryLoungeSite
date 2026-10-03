@@ -1,0 +1,97 @@
+# =====================================================================
+#  DADOS DO SITE — Lavanderia Laundry Lounge
+#  Único arquivo para preencher e atualizar dados do negócio.
+#
+#  Regra: campo vazio ("" ou []) = a frase ou seção que depende dele
+#  NÃO aparece no site. Nunca escreva texto entre colchetes aqui.
+#  Depois de editar, faça commit no main: o GitHub Pages reconstrói sozinho.
+# =====================================================================
+
+# --- 1. Dados fixos (NAP) — iguais ao Perfil da Empresa no Google ---
+empresa:
+  nome: "Lavanderia Laundry Lounge"
+  rua: "Rua Palamede Milioli, 192"
+  complemento: "Sala 2"
+  bairro: "Centro"
+  cidade: "Criciúma"
+  uf: "SC"
+  cep: "88802-050"
+  endereco_completo: "Rua Palamede Milioli, 192 – Sala 2 – Centro, Criciúma – SC, 88802-050"
+  telefone: "(48) 98806-1750"
+  telefone_link: "+5548988061750"
+  telefone_schema: "+55-48-98806-1750"
+  whatsapp: "5548988061750"
+  latitude: -28.681775
+  longitude: -49.374652
+  instagram_url: "https://www.instagram.com/laundrylounge/"
+  facebook_url: "https://www.facebook.com/LavanderiaLaundryLounge/"
+  pagamento: "PIX, cartão de crédito e débito"
+
+  # Horário em texto (rodapé). Se mudar, atualize também "horarios" logo abaixo.
+  horario_linhas:
+    - "Seg a sex 08:30–12:00 e 13:30–19:00"
+    - "Sáb 08:30–12:00"
+    - "Dom fechado"
+  # Mesmo horário, no formato do schema.org
+  horarios:
+    - dias: [Monday, Tuesday, Wednesday, Thursday, Friday]
+      abre: "08:30"
+      fecha: "12:00"
+    - dias: [Monday, Tuesday, Wednesday, Thursday, Friday]
+      abre: "13:30"
+      fecha: "19:00"
+    - dias: [Saturday]
+      abre: "08:30"
+      fecha: "12:00"
+
+  # Avaliações do Google (texto da faixa de confiança). Atualize quando mudar.
+  google_nota: "4,8"
+  google_avaliacoes: 91
+  # Link do Perfil da Empresa no Google (place ID ChIJdStia3mDIZURWYNnazwHXFo)
+  google_perfil_url: "https://www.google.com/maps/search/?api=1&query=Lavanderia%20Laundry%20Lounge&query_place_id=ChIJdStia3mDIZURWYNnazwHXFo"
+  mapa_embed_url: "https://maps.google.com/maps?q=Lavanderia%20Laundry%20Lounge%2C%20Rua%20Palamede%20Milioli%2C%20192%2C%20Crici%C3%BAma%20-%20SC&z=17&hl=pt-BR&output=embed"
+
+# --- Medição ---
+rastreamento:
+  google_ads_id: "AW-632418375"
+  ga4_id: ""                # ex.: "G-ABC123XYZ" — vazio = GA4 desligado
+
+# --- Fotos gerais ---
+fotos:
+  fachada: ""               # [FOTO-FACHADA] ex.: "/assets/img/fachada.jpg" — entra no schema da home
+  compartilhamento: "/assets/img/og-laundry-lounge.jpg"   # 1200×630 (WhatsApp/redes). Provisória com o logo: trocar por foto real da loja
+
+# --- Serviços: marcadores pendentes ---
+servicos:
+  tapetes:
+    prazo: ""               # [PRAZO] ex.: "5 dias úteis" — aparece no hero, no passo 3 e no FAQ
+    preco: ""               # [PREÇO] só o número, ex.: "25,00" — liga a seção Preço, o FAQ e o schema
+    preco_unidade: "m²"     # "m²" ou "peça" (se for peça, revisar o FAQ do preço na página)
+    bairros: ""             # [BAIRROS E CIDADES] ex.: "Centro, Pio Corrêa, Michel e Içara"
+    lava_pet: false         # true quando a loja confirmar que lava tapete com xixi de cachorro/gato
+    # [TIPOS DE TAPETE] — sugestão do documento de requisitos; CONFIRMAR com a loja
+    tipos:
+      - "Tapete de sala"
+      - "Tapete felpudo"
+      - "Tapete de banheiro"
+      - "Tapete infantil"
+    # Foto real do hero (WebP/AVIF). Vazio = hero sem foto.
+    foto_hero:
+      src: ""               # ex.: "/assets/img/tapetes/hero.webp"
+      alt: ""               # ex.: "Tapete felpudo limpo após lavagem na Laundry Lounge em Criciúma"
+      largura: 0
+      altura: 0
+    # Fotos reais de antes e depois (2 a 4 pares). Vazio = seção escondida.
+    # Formato de cada item:
+    #   - antes: "/assets/img/tapetes/antes-1.webp"
+    #     depois: "/assets/img/tapetes/depois-1.webp"
+    #     alt: "Tapete de sala"
+    #     largura: 800
+    #     altura: 600
+    antes_depois: []
+    # Avaliações reais do Google que citam tapete (1 a 3). Vazio = seção escondida.
+    # Formato de cada item:
+    #   - nome: "Maria S."
+    #     texto: "Texto exato da avaliação."
+    #     url: "link da avaliação ou do Perfil"
+    avaliacoes: []

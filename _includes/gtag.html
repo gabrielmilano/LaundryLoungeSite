@@ -1,0 +1,13 @@
+{%- assign rastreamento = site.data.negocio.rastreamento -%}
+{%- assign ga4_id = rastreamento.ga4_id | strip %}
+    <!-- Google tag — Google Ads {{ rastreamento.google_ads_id }}{% if ga4_id != "" %} + GA4 {{ ga4_id }}{% endif %} -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ rastreamento.google_ads_id }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ rastreamento.google_ads_id }}');
+{%- if ga4_id != "" %}
+        gtag('config', '{{ ga4_id }}');
+{%- endif %}
+    </script>
