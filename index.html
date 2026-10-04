@@ -334,6 +334,22 @@ last_modified_at: 2026-10-04
                 <h2 class="section-title">Onde estamos</h2>
                 <p class="section-desc">{{ site.data.negocio.empresa.endereco_completo }}</p>
             </div>
+{%- comment -%} Galeria "Conheça a loja": fotos reais que existirem (menos a que já está no topo) {%- endcomment -%}
+{%- assign chaves_loja = "fachada,balcao,maquinas,equipe" | split: "," -%}
+{%- assign galeria = "" | split: "" -%}
+{%- for chave in chaves_loja -%}
+  {%- unless chave == hero_foto -%}
+    {%- include foto.html chave=chave verificar=true -%}
+    {%- if foto_existe -%}{%- assign galeria = galeria | push: chave -%}{%- endif -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- if galeria.size > 0 %}
+            <ul class="loja-galeria" aria-label="Conheça a loja">
+{%- for chave in galeria %}
+                <li>{% include foto.html chave=chave classe="loja-galeria__foto" sizes="(min-width: 900px) 360px, 90vw" %}</li>
+{%- endfor %}
+            </ul>
+{%- endif %}
             <div class="map-wrapper" data-animate>
                 <iframe src="{{ site.data.negocio.empresa.mapa_embed_url }}" title="Mapa da Lavanderia Laundry Lounge no Centro de Criciúma" width="100%" height="400" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>

@@ -1296,6 +1296,23 @@ img { max-width: 100%; display: block; }
     }
 }
 
+/* Galeria "Conheça a loja" (só aparece com fotos reais em assets/img/fotos) */
+.loja-galeria {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.loja-galeria__foto {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: var(--radius);
+}
+
 /* === CTA FINAL === */
 .cta-final {
     padding: 100px 0;
