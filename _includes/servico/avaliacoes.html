@@ -19,3 +19,6 @@
         </div>
     </section>
 {%- endif %}
+{%- if n_avaliacoes == 0 %}
+{% include avaliacoes-google.html compacto=true %}
+{%- endif %}

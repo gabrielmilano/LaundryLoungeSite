@@ -14,20 +14,33 @@
 
 /* === HERO === */
 .svc-hero {
-    background: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-600) 100%);
+    position: relative;
+    overflow: hidden;
+    /* mesmo degradê da home: texto branco com contraste >= 4.5:1 */
+    background: linear-gradient(135deg, var(--blue-800) 0%, #1d4ed8 100%);
     color: var(--white);
     padding: 136px 0 72px;
 }
 
-.svc-hero__inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 48px;
-    align-items: center;
+/* Com a foto do serviço: foto cobrindo o fundo + camada escura (contraste >= 4.5:1) */
+.svc-hero__foto {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.svc-hero__inner--foto {
-    grid-template-columns: 1.1fr 0.9fr;
+.svc-hero--foto::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(12, 27, 51, 0.82) 0%, rgba(12, 27, 51, 0.7) 100%);
+}
+
+.svc-hero__inner {
+    position: relative;
+    z-index: 1;
 }
 
 .svc-hero__text {
@@ -43,7 +56,7 @@
 
 .svc-hero__subtitle {
     font-size: 1.15rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.92);
     line-height: 1.7;
     max-width: 560px;
     margin-bottom: 32px;
@@ -53,13 +66,6 @@
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
-}
-
-.svc-hero__media img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
 }
 
 /* Botão de ligação: só no celular */
@@ -78,7 +84,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.88);
 }
 
 .breadcrumb li + li::before {
@@ -118,10 +124,15 @@
     gap: 8px;
 }
 
-.svc-trust__list li:not(.svc-trust__nota)::before {
-    content: '\2713';
-    color: var(--blue-600);
-    font-weight: 700;
+.svc-trust__list .icone {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: #1d4ed8;
+}
+
+.svc-trust__list .svc-trust__estrela {
+    color: #f59e0b;
 }
 
 .svc-trust__list a {
@@ -535,10 +546,6 @@
 
 /* === RESPONSIVO === */
 @media (max-width: 900px) {
-    .svc-hero__inner--foto {
-        grid-template-columns: 1fr;
-    }
-
     .svc-hero__text {
         margin: 0 auto;
         text-align: center;

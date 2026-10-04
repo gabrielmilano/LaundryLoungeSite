@@ -1,7 +1,10 @@
 
     <!-- HERO -->
-    <section class="svc-hero">
-        <div class="container svc-hero__inner{% if foto_hero != '' %} svc-hero__inner--foto{% endif %}">
+    <section class="svc-hero{% if foto_hero != '' %} svc-hero--foto{% endif %}">
+{%- if foto_hero != "" %}
+        {% include foto.html chave=page.foto_hero classe="svc-hero__foto" prioridade=true sizes="100vw" %}
+{%- endif %}
+        <div class="container svc-hero__inner">
             <div class="svc-hero__text">
                 <nav class="breadcrumb" aria-label="Você está em">
                     <ol>
@@ -16,20 +19,15 @@
                     <a href="tel:{{ e.telefone_link }}" class="btn btn--outline btn--lg svc-ligar" data-servico="{{ page.servico_evento }}" data-posicao="hero">Ligar {{ e.telefone }}</a>
                 </div>
             </div>
-{%- if foto_hero != "" %}
-            <div class="svc-hero__media">
-                {% include foto.html chave=page.foto_hero prioridade=true sizes="(min-width: 900px) 45vw, 100vw" %}
-            </div>
-{%- endif %}
         </div>
     </section>
 
     <!-- FAIXA DE CONFIANÇA -->
     <section class="svc-trust" aria-label="Por que escolher a Laundry Lounge">
         <ul class="container svc-trust__list">
-            <li class="svc-trust__nota"><a href="{{ e.google_perfil_url }}" target="_blank" rel="noopener"><strong>{{ e.google_nota }}★</strong> · {{ e.google_avaliacoes }} avaliações no Google</a></li>
-            <li>Centro de Criciúma</li>
-            <li>Busca e entrega</li>
-            <li>PIX e cartão</li>
+            <li class="svc-trust__nota">{% include icone.html nome="estrela" classe="svc-trust__estrela" %}<a href="{{ e.google_perfil_url }}" target="_blank" rel="noopener"><strong>{{ e.google_nota }}</strong> · {{ e.google_avaliacoes }} avaliações no Google</a></li>
+            <li>{% include icone.html nome="pin" %}Centro de Criciúma</li>
+            <li>{% include icone.html nome="caminhao" %}Busca e entrega</li>
+            <li>{% include icone.html nome="cartao" %}PIX e cartão</li>
         </ul>
     </section>
