@@ -251,15 +251,21 @@ last_modified_at: 2026-10-04
     <section class="plans" id="planos">
         <div class="container">
             <div class="section-header" data-animate>
-                <span class="section-tag">Planos Mensais</span>
-                <h2 class="section-title">Roupas Dia a Dia</h2>
+                <span class="section-tag">Roupa pronta toda semana</span>
+                <h2 class="section-title">Planos mensais</h2>
                 <p class="section-desc">Escolha o plano ideal para sua necessidade.</p>
             </div>
-
-{%- include planos-cards.html botao="Saiba Mais" animar=true %}
-
-            <p class="plans__info" data-animate>Unidade: Centro</p>
-            <p class="plans__mais" data-animate><a href="/planos-mensais-lavanderia">Ver detalhes dos planos mensais</a></p>
+            <ul class="plans-resumo">
+{%- for categoria in site.data.negocio.planos %}
+                <li class="plans-resumo__item" data-animate>
+                    <h3 class="plans-resumo__nome">{{ categoria.categoria }}</h3>
+                    <p class="plans-resumo__texto">{{ categoria.resumo }}</p>
+                    <p class="plans-resumo__faixa">{{ categoria.faixa }}</p>
+                    <a href="/planos-mensais-lavanderia" class="btn btn--primary btn--block" aria-label="Ver planos {{ categoria.categoria }}">Ver planos</a>
+                </li>
+{%- endfor %}
+            </ul>
+            <p class="plans__info" data-animate>Unidade Centro · <a href="https://wa.me/5548988061750?text=Ol%C3%A1!%20Quero%20conhecer%20os%20planos%20mensais." target="_blank" rel="noopener" data-servico="planos" data-posicao="home-planos">Valores pelo WhatsApp</a></p>
         </div>
     </section>
 

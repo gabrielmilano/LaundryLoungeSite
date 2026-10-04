@@ -1139,16 +1139,61 @@ img { max-width: 100%; display: block; }
     margin-top: 32px;
 }
 
-.plans__mais {
-    text-align: center;
-    margin-top: 12px;
+/* Resumo dos planos na home (os 7 planos completos ficam em /planos-mensais-lavanderia) */
+.plans-resumo {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-.plans__mais a {
-    color: var(--blue-600);
-    font-weight: 600;
+.plans-resumo__item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+}
+
+.plans-resumo__nome {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--gray-900);
+}
+
+.plans-resumo__texto {
+    flex: 1;
+    font-size: 0.95rem;
+    color: var(--gray-600);
+}
+
+.plans-resumo__faixa {
+    align-self: flex-start;
+    padding: 6px 14px;
+    border-radius: 50px;
+    background: var(--blue-50);
+    border: 1px solid var(--blue-100);
+    color: #1d4ed8;
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.plans__info a {
+    color: #1d4ed8;
     text-decoration: underline;
     text-underline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+    .plans-resumo {
+        grid-template-columns: 1fr;
+    }
+
+    .plans-resumo__item {
+        padding: 22px;
+    }
 }
 
 /* === FAQ === */
