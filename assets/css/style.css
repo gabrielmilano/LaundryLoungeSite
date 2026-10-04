@@ -1513,15 +1513,17 @@ img { max-width: 100%; display: block; }
 }
 
 /* === ANIMATIONS === */
-[data-animate] {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
+/* Conteúdo visível por padrão. A animação só existe quando o JS marca <html class="anima">
+   e o usuário não pediu menos movimento: até 12px e 300ms. */
+@media (prefers-reduced-motion: no-preference) {
+    .anima [data-animate] {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
 
-[data-animate].animated {
-    opacity: 1;
-    transform: translateY(0);
+    .anima [data-animate]:not(.animated) {
+        opacity: 0;
+        transform: translateY(12px);
+    }
 }
 
 /* === RESPONSIVE === */

@@ -54,24 +54,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // === SCROLL ANIMATIONS ===
+    // O conteúdo é visível por padrão (CSS). A animação só liga com a classe "anima" no <html>
+    // e se o usuário não pediu menos movimento. O que já está na tela não some nem pisca.
     const animateElements = document.querySelectorAll('[data-animate]');
+    const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -80px 0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-                observer.unobserve(entry.target);
-            }
+    if (!reduzirMovimento && 'IntersectionObserver' in window) {
+        const alturaTela = window.innerHeight;
+        animateElements.forEach(el => {
+            if (el.getBoundingClientRect().top < alturaTela) el.classList.add('animated');
         });
-    }, observerOptions);
+        document.documentElement.classList.add('anima');
 
-    animateElements.forEach(el => observer.observe(el));
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { root: null, rootMargin: '0px 0px -40px 0px', threshold: 0.1 });
+
+        animateElements.forEach(el => {
+            if (!el.classList.contains('animated')) observer.observe(el);
+        });
+    }
 
     // === FAQ ACCORDION ===
     const faqItems = document.querySelectorAll('.faq-item');
