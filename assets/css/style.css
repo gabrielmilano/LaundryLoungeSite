@@ -925,8 +925,36 @@ img { max-width: 100%; display: block; }
 }
 
 .diff-card__icon {
-    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--blue-100);
+    color: #1d4ed8;
     margin-bottom: 16px;
+}
+
+.diff-card__icon .icone {
+    width: 24px;
+    height: 24px;
+}
+
+/* Celular: ícone ao lado do texto, card mais baixo */
+@media (max-width: 640px) {
+    .diff-card {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        column-gap: 16px;
+        align-items: start;
+        padding: 20px;
+    }
+
+    .diff-card__icon {
+        grid-row: span 2;
+        margin-bottom: 0;
+    }
 }
 
 .diff-card h3 {
