@@ -478,7 +478,7 @@ img { max-width: 100%; display: block; }
     padding: 6px 16px;
     border-radius: 50px;
     background: var(--blue-100);
-    color: var(--blue-600);
+    color: #1d4ed8;
     font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -1400,9 +1400,32 @@ img { max-width: 100%; display: block; }
 }
 
 .footer__contact-info {
+    list-style: none;
+    display: grid;
+    gap: 8px;
     color: var(--gray-300);
     font-size: 0.9rem;
-    line-height: 2;
+    line-height: 1.6;
+}
+
+.footer__contact-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.footer__contact-info .icone {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--blue-400);
+}
+
+@media (max-width: 900px) {
+    .footer__contact-info li {
+        justify-content: center;
+    }
 }
 
 .footer__links h4,
@@ -1442,7 +1465,7 @@ img { max-width: 100%; display: block; }
 
 .footer__bottom p {
     font-size: 0.8rem;
-    color: var(--gray-500);
+    color: #94a3b8;
 }
 
 /* === BRANDING NEGOCIOS SMART === */
@@ -1476,7 +1499,7 @@ img { max-width: 100%; display: block; }
 
 .branding-ns p {
     font-size: 0.8rem;
-    color: var(--gray-400);
+    color: #94a3b8; /* --gray-400 não existe no :root: o texto ficava invisível */
 }
 
 .branding-ns a {
@@ -1505,6 +1528,12 @@ img { max-width: 100%; display: block; }
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
     z-index: 999;
     transition: var(--transition);
+}
+
+@media (max-width: 768px) {
+    .branding-ns {
+        padding-bottom: 100px;
+    }
 }
 
 .whatsapp-float:hover {

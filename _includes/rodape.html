@@ -6,14 +6,14 @@
         <div class="container footer__inner">
             <div class="footer__brand">
                 <a href="{% if page.url == '/' %}#{% else %}/{% endif %}" class="footer__logo">
-                    <img src="/assets/img/logo-rodape-sm.webp" srcset="/assets/img/logo-rodape-sm.webp 96w, /assets/img/logo-rodape.webp 240w" sizes="47px" alt="" class="footer__logo-img" width="47" height="36" loading="lazy">
+                    <img src="/assets/img/logo-rodape-sm.webp" srcset="/assets/img/logo-rodape-sm.webp 96w, /assets/img/logo-rodape.webp 240w" sizes="47px" alt="Logo Laundry Lounge" class="footer__logo-img" width="47" height="36" loading="lazy">
                     <span class="logo-text">Laundry <span class="accent">Lounge</span></span>
                 </a>
                 <p class="footer__tagline">Lavanderia especializada em edredons, toalhas e roupas.</p>
-                <p class="footer__contact-info">
-                    &#128205; {{ e.endereco_completo | replace: e.cep, cep_inteiro }}<br>
-                    &#128222; <a href="tel:{{ e.telefone_link }}">{{ e.telefone }}</a>
-                </p>
+                <ul class="footer__contact-info">
+                    <li>{% include icone.html nome="pin" %}<span>{{ e.endereco_completo | replace: e.cep, cep_inteiro }}</span></li>
+                    <li>{% include icone.html nome="telefone" %}<a href="tel:{{ e.telefone_link }}">{{ e.telefone }}</a></li>
+                </ul>
             </div>
             <div class="footer__links">
                 <h2 class="footer__heading">Links</h2>
