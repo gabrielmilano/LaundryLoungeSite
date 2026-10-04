@@ -644,6 +644,144 @@ img { max-width: 100%; display: block; }
     color: var(--blue-700);
 }
 
+/* === AVALIAÇÕES === */
+.reviews {
+    padding: 88px 0;
+    background: var(--white);
+}
+
+.reviews__topo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.reviews__topo .section-title {
+    margin-bottom: 0;
+}
+
+.reviews__nota {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.reviews__numero {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--gray-900);
+}
+
+.reviews__estrelas {
+    display: flex;
+    gap: 2px;
+    color: #f59e0b;
+}
+
+.reviews__estrelas .icone {
+    width: 20px;
+    height: 20px;
+}
+
+.reviews__total {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.9rem;
+    color: var(--gray-600);
+}
+
+.reviews__lista {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 28px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+}
+
+.review-card__texto {
+    flex: 1;
+    color: var(--gray-700);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.review-card__autor {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gray-600);
+}
+
+.reviews__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.btn--contorno {
+    background: transparent;
+    color: #1d4ed8;
+    border: 2px solid var(--blue-600);
+}
+
+.btn--contorno:hover {
+    background: var(--blue-50);
+}
+
+/* Versão compacta (páginas de serviço) */
+.reviews--compacto {
+    padding: 64px 0;
+    background: var(--gray-50);
+}
+
+.reviews--compacto .review-card {
+    background: var(--white);
+    padding: 22px;
+}
+
+.reviews--compacto .reviews__topo {
+    margin-bottom: 28px;
+}
+
+/* No celular: cards rolam na horizontal, com encaixe */
+@media (max-width: 768px) {
+    .reviews {
+        padding: 64px 0;
+    }
+
+    .reviews__lista {
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: 84%;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .review-card {
+        scroll-snap-align: start;
+    }
+
+    .reviews__numero {
+        font-size: 2.4rem;
+    }
+}
+
 /* === HOW IT WORKS === */
 .how-it-works {
     padding: 100px 0;

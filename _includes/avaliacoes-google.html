@@ -1,0 +1,37 @@
+{%- comment -%}
+  Avaliações reais do Google (_data/negocio.yml > avaliacoes_google). Sem schema de review.
+  Parâmetro: compacto=true (versão das páginas de serviço).
+{%- endcomment -%}
+{%- assign e = site.data.negocio.empresa %}
+    <!-- AVALIAÇÕES -->
+    <section class="reviews{% if include.compacto %} reviews--compacto{% endif %}" id="avaliacoes" aria-labelledby="avaliacoes-titulo">
+        <div class="container">
+            <div class="reviews__topo">
+                <div>
+                    <span class="section-tag">Avaliações</span>
+                    <h2 class="section-title" id="avaliacoes-titulo">O que dizem nossos clientes</h2>
+                </div>
+                <div class="reviews__nota">
+                    <span class="reviews__numero">{{ e.google_nota }}</span>
+                    <span>
+                        <span class="reviews__estrelas" aria-hidden="true">{% for i in (1..5) %}{% include icone.html nome="estrela" %}{% endfor %}</span>
+                        <span class="reviews__total">{{ e.google_avaliacoes }} avaliações no Google</span>
+                    </span>
+                </div>
+            </div>
+            <ul class="reviews__lista">
+{%- for texto in site.data.negocio.avaliacoes_google %}
+                <li class="review-card">
+                    <blockquote class="review-card__texto"><p>“{{ texto }}”</p></blockquote>
+                    <p class="review-card__autor">Cliente no Google</p>
+                </li>
+{%- endfor %}
+            </ul>
+            <div class="reviews__acoes">
+                <a href="{{ e.google_perfil_url }}" class="btn btn--primary" target="_blank" rel="noopener">Ver todas no Google</a>
+{%- unless include.compacto %}
+                <a href="{{ e.google_avaliar_url }}" class="btn btn--contorno" target="_blank" rel="noopener">Deixe sua avaliação</a>
+{%- endunless %}
+            </div>
+        </div>
+    </section>

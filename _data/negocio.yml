@@ -56,6 +56,13 @@ empresa:
   # ex.: "Centro, Pio Corrêa, Michel e Içara". Vazio = seção "Área atendida" vira "Onde fica a loja"
   bairros_entrega: ""
 
+# --- Avaliações reais do Google (textos exatos; sem nome, assinadas "Cliente no Google") ---
+# Aparecem na home e, em versão compacta, nas páginas de serviço. Sem marcação de schema.
+avaliacoes_google:
+  - "Fui na lavanderia e fiquei super satisfeita, lavei várias roupas, o valor é bem acessível, muito prático, adorei a experiência!"
+  - "Gostei muito do atendimento e do serviço prestado. Recomendo."
+  - "Atendimento cordial. Serviço de qualidade."
+
 # --- Medição ---
 rastreamento:
   google_ads_id: "AW-632418375"
