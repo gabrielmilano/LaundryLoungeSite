@@ -542,8 +542,28 @@ img { max-width: 100%; display: block; }
 
 .services__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+/* WhatsApp como opção secundária no card de serviço */
+.service-card__whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    margin-top: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--gray-600);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.service-card__whatsapp:hover {
+    color: var(--blue-600);
 }
 
 .service-card {
