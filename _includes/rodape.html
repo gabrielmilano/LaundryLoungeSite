@@ -18,13 +18,18 @@
             <div class="footer__links">
                 <h2 class="footer__heading">Links</h2>
                 <a href="{{ inicio }}#servicos">Serviços</a>
-                <a href="/lavagem-de-tapetes-criciuma">Lavagem de tapetes</a>
                 <a href="{{ inicio }}#como-funciona">Como Funciona</a>
                 <a href="{{ inicio }}#diferenciais">Diferenciais</a>
                 <a href="{{ inicio }}#faq">FAQ</a>
                 <a href="/politica-de-privacidade-google-ads/">Privacidade</a>
                 <a href="{{ e.instagram_url }}" target="_blank" rel="noopener">Instagram</a>
                 <a href="{{ e.facebook_url }}" target="_blank" rel="noopener">Facebook</a>
+            </div>
+            <div class="footer__links footer__servicos">
+                <h2 class="footer__heading">Serviços</h2>
+{%- for servico in site.data.negocio.paginas_servico %}
+                <a href="{{ servico.url }}">{{ servico.nome }}</a>
+{%- endfor %}
             </div>
             <div class="footer__links">
                 <h2 class="footer__heading">Horários</h2>

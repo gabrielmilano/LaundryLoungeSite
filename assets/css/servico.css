@@ -167,6 +167,58 @@
     right: 18%;
 }
 
+/* Como funciona: 4 passos (grade padrão do style.css) */
+.steps--4 {
+    list-style: none;
+}
+
+/* === TEXTO CORRIDO === */
+.svc-texto {
+    max-width: 760px;
+}
+
+.svc-texto p {
+    color: var(--gray-600);
+    font-size: 1.02rem;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.svc-texto h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin: 32px 0 12px;
+}
+
+.svc-texto--centro {
+    margin: 48px auto 0;
+    text-align: center;
+}
+
+.svc-texto--centro h3 {
+    margin-top: 0;
+}
+
+.svc-lista {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+
+.svc-lista li {
+    display: flex;
+    gap: 10px;
+    color: var(--gray-700);
+}
+
+.svc-lista li::before {
+    content: '\2713';
+    color: var(--blue-600);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
 /* === O QUE LAVAMOS === */
 .svc-tipos {
     list-style: none;
@@ -193,6 +245,30 @@
     content: '\2713';
     color: var(--blue-600);
     font-weight: 700;
+}
+
+.svc-tipos--3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Selos de cuidado (ex.: "Máquinas com grande capacidade") */
+.svc-selos {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.svc-selos li {
+    padding: 8px 16px;
+    border-radius: 50px;
+    background: var(--blue-50);
+    border: 1px solid var(--blue-100);
+    color: var(--blue-700);
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
 .svc-nota {
@@ -294,6 +370,107 @@
     text-decoration: underline;
 }
 
+/* === PARA QUEM É === */
+.svc-publico {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.svc-publico li {
+    padding: 28px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+}
+
+.svc-publico h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 8px;
+}
+
+.svc-publico p {
+    font-size: 0.92rem;
+    color: var(--gray-600);
+    line-height: 1.7;
+}
+
+/* === CHAMADA (ex.: planos mensais) === */
+.svc-chamada {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 40px;
+    background: var(--white);
+    border: 1px solid var(--blue-100);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.svc-chamada__titulo {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 10px;
+}
+
+.svc-chamada__texto {
+    color: var(--gray-600);
+    max-width: 620px;
+}
+
+.svc-chamada .btn {
+    flex-shrink: 0;
+}
+
+/* === OUTROS SERVIÇOS === */
+.svc-outros__lista {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.svc-outros__card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 28px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+}
+
+.svc-outros__card:hover {
+    transform: translateY(-4px);
+    border-color: var(--blue-400);
+    box-shadow: var(--shadow-lg);
+}
+
+.svc-outros__nome {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 8px;
+}
+
+.svc-outros__resumo {
+    flex: 1;
+    font-size: 0.92rem;
+    color: var(--gray-600);
+    margin-bottom: 16px;
+}
+
+.svc-outros__ver {
+    font-weight: 600;
+    color: #1d4ed8;
+}
+
 /* === PERGUNTAS FREQUENTES (details/summary) === */
 .svc-faq {
     max-width: 760px;
@@ -383,8 +560,16 @@
         margin: 0 auto;
     }
 
-    .svc-tipos {
+    .svc-tipos,
+    .svc-tipos--3,
+    .svc-publico,
+    .svc-outros__lista {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .svc-chamada {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
@@ -420,7 +605,18 @@
         margin: 0 auto;
     }
 
-    .svc-tipos {
+    .svc-tipos,
+    .svc-tipos--3,
+    .svc-publico,
+    .svc-outros__lista {
         grid-template-columns: 1fr;
+    }
+
+    .svc-chamada {
+        padding: 28px 24px;
+    }
+
+    .svc-chamada .btn {
+        width: 100%;
     }
 }

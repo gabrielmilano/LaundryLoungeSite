@@ -1,0 +1,42 @@
+{%- comment -%}
+  Cards dos planos mensais (dados em _data/negocio.yml > planos). Usado na home e em /planos-mensais-lavanderia.
+  Parâmetros: botao = texto do botão enquanto o plano não tem preço; evento = valor de data-servico (opcional).
+{%- endcomment -%}
+{%- for categoria in site.data.negocio.planos %}
+
+            <!-- {{ categoria.categoria }} -->
+            <div class="plans__category"{% if include.animar %} data-animate{% endif %}>
+                <h3 class="plans__category-title">{{ categoria.categoria }}</h3>
+                <div class="plans__grid{% if categoria.unico %} plans__grid--single{% endif %}">
+{%- for plano in categoria.itens %}
+{%- assign preco_plano = plano.preco | strip %}
+                    <div class="pricing-card{% if plano.destaque %} pricing-card--featured{% endif %}" data-monthly="Sob consulta" data-yearly="Sob consulta">
+{%- if plano.destaque %}
+                        <div class="pricing-card__badge">{{ plano.destaque }}</div>
+{%- endif %}
+                        <div class="pricing-card__header">
+                            <h4 class="pricing-card__name">{{ plano.nome }}</h4>
+                            <div class="pricing-card__price">
+{%- if preco_plano != "" %}
+                                <span class="pricing-card__value">R$ {{ preco_plano }}</span><span class="pricing-card__period">/mês</span>
+{%- else %}
+                                <span class="pricing-card__value pricing-card__value--contact">Sob consulta</span>
+{%- endif %}
+                            </div>
+{%- if plano.observacao %}
+                            <p class="pricing-card__period">{{ plano.observacao }}</p>
+{%- endif %}
+                        </div>
+                        <ul class="pricing-card__features">
+{%- for recurso in plano.recursos %}
+                            <li><span class="pricing-card__check">&#10003;</span> {{ recurso }}</li>
+{%- endfor %}
+                        </ul>
+                        <a href="https://wa.me/{{ site.data.negocio.empresa.whatsapp }}?text={{ plano.whatsapp_texto }}" class="btn btn--primary btn--block" target="_blank" rel="noopener"{% if include.evento %} data-servico="{{ include.evento }}" data-posicao="card-{{ plano.chave }}"{% endif %}>
+                            {% if preco_plano != "" and include.botao_com_preco %}{{ include.botao_com_preco }}{% else %}{{ include.botao }}{% endif %}
+                        </a>
+                    </div>
+{%- endfor %}
+                </div>
+            </div>
+{%- endfor %}

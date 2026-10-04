@@ -1,0 +1,21 @@
+{%- if faq_visiveis.size > 0 %}
+
+    <!-- PERGUNTAS FREQUENTES -->
+    <section class="svc-section{% if include.alt %} svc-section--alt{% endif %}" id="perguntas">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Dúvidas</span>
+                <h2 class="section-title">Perguntas frequentes</h2>
+            </div>
+            <div class="svc-faq">
+{%- for item in faq_visiveis %}
+{%- include servico/resposta.html %}
+                <details class="svc-faq__item">
+                    <summary>{{ item.pergunta }}</summary>
+                    <p>{{ resposta }}</p>
+                </details>
+{%- endfor %}
+            </div>
+        </div>
+    </section>
+{%- endif %}

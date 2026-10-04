@@ -1,0 +1,102 @@
+{%- comment -%}
+  Final comum das páginas de serviço: área atendida (opcional), chamada final,
+  "Outros serviços" e dados estruturados (Service, FAQPage, BreadcrumbList).
+  Parâmetro: area=false esconde a área atendida.
+{%- endcomment -%}
+{%- unless include.area == false %}
+
+    <!-- ÁREA ATENDIDA -->
+    <section class="map-section svc-section" id="area-atendida">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Localização</span>
+{%- if bairros != "" %}
+                <h2 class="section-title">Área atendida</h2>
+                <p class="section-desc svc-lead">Buscamos e entregamos em: {{ bairros }}.</p>
+{%- else %}
+                <h2 class="section-title">Onde fica a loja</h2>
+{%- endif %}
+                <p class="section-desc svc-lead">{{ e.endereco_completo }}</p>
+            </div>
+            <div class="map-wrapper">
+                <iframe src="{{ e.mapa_embed_url }}" title="Mapa da Lavanderia Laundry Lounge no Centro de Criciúma" width="100%" height="400" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+{%- endunless %}
+
+    <!-- CHAMADA FINAL -->
+    <section class="cta-final">
+        <div class="container cta-final__content">
+            <h2 class="cta-final__title">{{ page.cta_titulo }}</h2>
+            <p class="cta-final__text">{{ page.cta_texto }}</p>
+            <div class="cta-final__actions">
+                <a href="{{ page.whatsapp_url }}" class="btn btn--white btn--lg" target="_blank" rel="noopener" data-servico="{{ page.servico_evento }}" data-posicao="final">{{ page.whatsapp_botao | default: "Pedir orçamento no WhatsApp" }}</a>
+                <a href="tel:{{ e.telefone_link }}" class="btn btn--outline btn--lg svc-ligar" data-servico="{{ page.servico_evento }}" data-posicao="final">Ligar {{ e.telefone }}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUTROS SERVIÇOS -->
+    <section class="svc-section svc-outros" aria-labelledby="outros-servicos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Laundry Lounge</span>
+                <h2 class="section-title" id="outros-servicos">Outros serviços</h2>
+            </div>
+            <ul class="svc-outros__lista">
+{%- for s in site.data.negocio.paginas_servico %}
+{%- unless s.url == page.url %}
+                <li>
+                    <a href="{{ s.url }}" class="svc-outros__card">
+                        <h3 class="svc-outros__nome">{{ s.nome }}</h3>
+                        <p class="svc-outros__resumo">{{ s.resumo }}</p>
+                        <span class="svc-outros__ver">Ver serviço <span aria-hidden="true">→</span></span>
+                    </a>
+                </li>
+{%- endunless %}
+{%- endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- DADOS ESTRUTURADOS -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": {{ page.schema_nome | jsonify }},
+      "serviceType": {{ page.schema_tipo | jsonify }},
+      "provider": { "@id": "{{ site.url }}/#empresa" },
+      "areaServed": { "@type": "City", "name": "Criciúma" },
+      "url": "{{ url_pagina }}"
+{%- assign offers_json = offers_json | strip -%}
+{%- if offers_json != "" %},
+      "offers": {{ offers_json }}
+{%- endif %}
+    }
+    </script>
+{%- if faq_visiveis.size > 0 %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+{%- for item in faq_visiveis %}
+{%- include servico/resposta.html %}
+        { "@type": "Question", "name": {{ item.pergunta | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ resposta | jsonify }} } }{% unless forloop.last %},{% endunless %}
+{%- endfor %}
+      ]
+    }
+    </script>
+{%- endif %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "{{ site.url }}/" },
+        { "@type": "ListItem", "position": 2, "name": {{ page.breadcrumb | jsonify }}, "item": "{{ url_pagina }}" }
+      ]
+    }
+    </script>

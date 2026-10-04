@@ -51,6 +51,10 @@ empresa:
   google_perfil_url: "https://www.google.com/maps/search/?api=1&query=Lavanderia%20Laundry%20Lounge&query_place_id=ChIJdStia3mDIZURWYNnazwHXFo"
   mapa_embed_url: "https://maps.google.com/maps?q=Lavanderia%20Laundry%20Lounge%2C%20Rua%20Palamede%20Milioli%2C%20192%2C%20Crici%C3%BAma%20-%20SC&z=17&hl=pt-BR&output=embed"
 
+  # [BAIRROS E CIDADES] com busca e entrega — vale para todas as páginas de serviço
+  # ex.: "Centro, Pio Corrêa, Michel e Içara". Vazio = seção "Área atendida" vira "Onde fica a loja"
+  bairros_entrega: ""
+
 # --- Medição ---
 rastreamento:
   google_ads_id: "AW-632418375"
@@ -67,7 +71,6 @@ servicos:
     prazo: ""               # [PRAZO] ex.: "5 dias úteis" — aparece no hero, no passo 3 e no FAQ
     preco: ""               # [PREÇO] só o número, ex.: "25,00" — liga a seção Preço, o FAQ e o schema
     preco_unidade: "m²"     # "m²" ou "peça" (se for peça, revisar o FAQ do preço na página)
-    bairros: ""             # [BAIRROS E CIDADES] ex.: "Centro, Pio Corrêa, Michel e Içara"
     lava_pet: false         # true quando a loja confirmar que lava tapete com xixi de cachorro/gato
     # [TIPOS DE TAPETE] — sugestão do documento de requisitos; CONFIRMAR com a loja
     tipos:
@@ -95,3 +98,111 @@ servicos:
     #     texto: "Texto exato da avaliação."
     #     url: "link da avaliação ou do Perfil"
     avaliacoes: []
+
+  edredom:
+    prazo: ""               # [PRAZO] ex.: "3 dias úteis" — liga o passo 3 e a pergunta do prazo
+    preco: ""               # [PREÇO] "a partir de", só o número, ex.: "40,00" — liga a seção Preço, o FAQ e o schema
+    preco_unidade: ""       # deixe vazio (o preço varia por tamanho)
+    lava_pena: false        # [CONFIRMAR COM A LOJA] true se lava edredom de pena/plumas — liga a pergunta do FAQ
+    # Peças que o site atual já confirma. Para incluir manta, travesseiro ou edredom de pena,
+    # acrescente a linha aqui só depois que a loja confirmar.
+    tipos:
+      - "Edredom de todos os tamanhos"
+      - "Cobertor"
+      - "Lençóis"
+      - "Fronhas"
+    foto_hero:
+      src: ""
+      alt: ""
+      largura: 0
+      altura: 0
+    # Avaliações reais do Google que citam edredom (mesmo formato de tapetes). Vazio = seção escondida.
+    avaliacoes: []
+
+  roupas:
+    preco: ""               # [PREÇO] só o número, ex.: "4,50" — liga a seção Preço e o schema
+    preco_unidade: "peça"   # "peça" ou "cesto"
+    # Lista copiada do card "Roupas do dia a dia & Roupas de festa" da home
+    tipos:
+      - "Camisas e Camisetas"
+      - "Casacos e jaquetas"
+      - "Casacos de lã batida"
+      - "Ternos e vestidos de festa"
+      - "Uniformes de empresas"
+      - "Enxoval de bebês"
+    foto_hero:
+      src: ""
+      alt: ""
+      largura: 0
+      altura: 0
+
+  planos:
+    troca_plano: ""         # [CONFIRMAR COM A LOJA] resposta para "Posso trocar de plano?" — vazio = pergunta escondida
+    foto_hero:
+      src: ""
+      alt: ""
+      largura: 0
+      altura: 0
+
+# --- Planos mensais (copiados da home; a home e /planos-mensais-lavanderia usam esta mesma lista) ---
+# preco: [PREÇO DE CADA PLANO] só o número, ex.: "149,90" (por mês). Vazio = "Sob consulta".
+planos:
+  - categoria: "Somente Passadas"
+    itens:
+      - nome: "Individual"
+        chave: "individual-passadas"
+        preco: ""
+        recursos: ["<strong>10</strong> peças/semana", "<strong>40</strong> peças/mês", "Passadas profissionais", "Entrega programada"]
+        whatsapp_texto: "Ol%C3%A1%21%20Tenho%20interesse%20no%20plano%20Individual%20Somente%20Passadas.%20Poderia%20me%20informar%20os%20valores%3F"
+      - nome: "Casal"
+        chave: "casal-passadas"
+        preco: ""
+        recursos: ["<strong>15</strong> peças/semana", "<strong>60</strong> peças/mês", "Passadas profissionais", "Entrega programada"]
+        whatsapp_texto: "Ol%C3%A1%21%20Tenho%20interesse%20no%20plano%20Casal%20Somente%20Passadas.%20Poderia%20me%20informar%20os%20valores%3F"
+      - nome: "Família"
+        chave: "familia-passadas"
+        preco: ""
+        recursos: ["<strong>20</strong> peças/semana", "<strong>80</strong> peças/mês", "Passadas profissionais", "Entrega programada"]
+        whatsapp_texto: "Ol%C3%A1%21%20Tenho%20interesse%20no%20plano%20Fam%C3%ADlia%20Somente%20Passadas.%20Poderia%20me%20informar%20os%20valores%3F"
+  - categoria: "Lavadas & Dobradas"
+    unico: true
+    itens:
+      - nome: "04 Cestos Mensais"
+        chave: "04-cestos-lavadas-dobradas"
+        preco: ""
+        destaque: "Custo Benefício"
+        observacao: "Permanência mínima de 4 meses"
+        recursos: ["Até <strong>20</strong> peças/semana", "Até <strong>80</strong> peças/mês", "Lavagem completa", "Dobras profissionais", "Entrega programada"]
+        whatsapp_texto: "Ol%C3%A1%21%20Tenho%20interesse%20no%20plano%20Lavadas%20%26%20Dobradas%20(04%20cestos).%20Poderia%20me%20informar%20os%20valores%3F"
+  - categoria: "Lavadas & Passadas"
+    itens:
+      - nome: "Business"
+        chave: "business-lavadas-passadas"
+        preco: ""
+        recursos: ["<strong>05</strong> peças/semana", "<strong>20</strong> peças/mês", "Lavagem completa", "Passadas profissionais"]
+        whatsapp_texto: "Ol%C3%A1%21%20Tenho%20interesse%20no%20plano%20Business%20Lavadas%20%26%20Passadas.%20Poderia%20me%20informar%20os%20valores%3F"
+      - nome: "Individual"
+        chave: "individual-lavadas-passadas"
+        preco: ""
+        recursos: ["<strong>10</strong> peças/semana", "<strong>40</strong> peças/mês", "Lavagem completa", "Passadas profissionais"]
+        whatsapp_texto: "Ol%C3%A1%21%20Tenho%20interesse%20no%20plano%20Individual%20Lavadas%20%26%20Passadas.%20Poderia%20me%20informar%20os%20valores%3F"
+      - nome: "Casal"
+        chave: "casal-lavadas-passadas"
+        preco: ""
+        recursos: ["<strong>15</strong> peças/semana", "<strong>60</strong> peças/mês", "Lavagem completa", "Passadas profissionais"]
+        whatsapp_texto: "Ol%C3%A1%21%20Tenho%20interesse%20no%20plano%20Casal%20Lavadas%20%26%20Passadas.%20Poderia%20me%20informar%20os%20valores%3F"
+
+# --- Páginas de serviço (bloco "Outros serviços" e rodapé) ---
+paginas_servico:
+  - url: "/lavagem-de-tapetes-criciuma"
+    nome: "Lavagem de tapetes"
+    resumo: "Lavagem e secagem em máquina, com busca e entrega."
+  - url: "/lavagem-de-edredom-e-cobertor-criciuma"
+    nome: "Lavagem de edredom e cobertor"
+    resumo: "Edredons e cobertores de todos os tamanhos, em máquinas com grande capacidade."
+  - url: "/lavar-e-passar-roupas-criciuma"
+    nome: "Lavar e passar roupas"
+    resumo: "Roupas do dia a dia, sociais e de festa, cuidadas por tipo de tecido."
+  - url: "/planos-mensais-lavanderia"
+    nome: "Planos mensais"
+    resumo: "Somente passadas, lavadas e dobradas ou lavadas e passadas, toda semana."

@@ -1,0 +1,41 @@
+{%- comment -%}
+  Variáveis comuns das páginas de serviço. O front matter "servico" é a chave em
+  _data/negocio.yml > servicos. Perguntas do FAQ:
+    requer: prazo | preco | bairros | <campo do serviço>  → só aparece com o marcador preenchido
+    sem: bairros                                          → só aparece enquanto o marcador estiver vazio
+    resposta_de: <campo do serviço>                       → a resposta é o texto do campo
+  {prazo}, {preco} e {bairros} na resposta são trocados pelo valor preenchido.
+{%- endcomment -%}
+{%- assign e = site.data.negocio.empresa -%}
+{%- assign d = site.data.negocio.servicos[page.servico] -%}
+{%- assign prazo = d.prazo | strip -%}
+{%- assign preco = d.preco | strip -%}
+{%- assign bairros = e.bairros_entrega | strip -%}
+{%- assign foto_hero = d.foto_hero.src | strip -%}
+{%- assign url_pagina = page.url | absolute_url -%}
+
+{%- assign faq_visiveis = "" | split: "" -%}
+{%- for item in page.faq -%}
+  {%- assign mostrar = true -%}
+  {%- if item.requer -%}
+    {%- case item.requer -%}
+      {%- when "prazo" -%}{%- assign valor = prazo -%}
+      {%- when "preco" -%}{%- assign valor = preco -%}
+      {%- when "bairros" -%}{%- assign valor = bairros -%}
+      {%- else -%}{%- assign valor = d[item.requer] -%}
+    {%- endcase -%}
+    {%- if valor == true -%}
+    {%- elsif valor == false or valor == nil -%}{%- assign mostrar = false -%}
+    {%- else -%}{%- assign valor = valor | strip -%}{%- if valor == "" -%}{%- assign mostrar = false -%}{%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if item.sem == "bairros" and bairros != "" -%}{%- assign mostrar = false -%}{%- endif -%}
+  {%- if mostrar -%}{%- assign faq_visiveis = faq_visiveis | push: item -%}{%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} Offer do schema Service (preço único "a partir de"); a página de planos substitui {%- endcomment -%}
+{%- assign offers_json = "" -%}
+{%- if preco != "" -%}
+  {%- assign unidade = d.preco_unidade | strip -%}
+  {%- capture offers_json -%}{ "@type": "Offer", "priceCurrency": "BRL", "priceSpecification": { "@type": "UnitPriceSpecification", "price": {{ preco | remove: "." | replace: ",", "." | jsonify }}{% if unidade != "" %}, "unitText": {{ unidade | jsonify }}{% endif %} } }{%- endcapture -%}
+{%- endif -%}

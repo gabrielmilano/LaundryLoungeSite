@@ -1,0 +1,6 @@
+{%- comment -%} Resposta de uma pergunta do FAQ (usa "item" do loop). Mesmo texto no HTML e no schema. {%- endcomment -%}
+{%- if item.resposta_de -%}
+  {%- assign resposta = d[item.resposta_de] | strip -%}
+{%- else -%}
+  {%- assign resposta = item.resposta | replace: "{prazo}", prazo | replace: "{preco}", preco | replace: "{bairros}", bairros -%}
+{%- endif -%}

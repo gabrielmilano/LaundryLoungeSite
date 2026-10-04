@@ -627,6 +627,10 @@ img { max-width: 100%; display: block; }
     font-size: 0.85rem;
 }
 
+.service-card__title a:hover {
+    color: var(--blue-600);
+}
+
 .service-card__features a {
     color: var(--blue-600);
     font-weight: 600;
@@ -907,6 +911,18 @@ img { max-width: 100%; display: block; }
     margin-top: 32px;
 }
 
+.plans__mais {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.plans__mais a {
+    color: var(--blue-600);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 /* === FAQ === */
 .faq {
     padding: 100px 0;
@@ -1084,7 +1100,7 @@ img { max-width: 100%; display: block; }
 
 .footer__inner {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
     gap: 48px;
     padding-bottom: 40px;
 }
@@ -1138,6 +1154,11 @@ img { max-width: 100%; display: block; }
 
 .footer__links a:hover {
     color: var(--blue-400);
+}
+
+.footer__servicos a {
+    display: block;
+    margin-bottom: 8px;
 }
 
 .footer__bottom {

@@ -1,0 +1,130 @@
+---
+layout: servico
+permalink: /planos-mensais-lavanderia
+title: "Planos Mensais de Lavanderia em Criciúma | Laundry Lounge"
+description: "Planos mensais de lavanderia em Criciúma: somente passadas, lavadas e dobradas ou lavadas e passadas. Para você, casal, família ou empresa."
+breadcrumb: "Planos mensais"
+h1: "Planos mensais de lavanderia: roupa lavada e passada toda semana"
+servico: planos
+servico_evento: planos
+schema_nome: "Planos mensais de lavanderia"
+schema_tipo: "Plano mensal de lavanderia"
+whatsapp_url: "https://wa.me/5548988061750?text=Ol%C3%A1!%20Quero%20conhecer%20os%20planos%20mensais."
+whatsapp_botao: "Conhecer os planos no WhatsApp"
+cta_titulo: "Roupa pronta toda semana"
+cta_texto: "Conte no WhatsApp quantas peças você usa por semana e a gente indica o plano."
+last_modified_at: 2026-10-03
+# Perguntas frequentes (regras "requer"/"resposta_de" em _includes/servico/vars.html)
+faq:
+  - pergunta: "Como funciona o plano mensal?"
+    resposta: "Você escolhe o plano pela quantidade de peças por semana. Vamos até a sua casa ou empresa buscar as peças e a entrega é programada, com as roupas limpas, cheirosas e perfeitamente embaladas."
+  - pergunta: "Tem fidelidade ou mínimo de meses?"
+    resposta: "O plano Lavadas & Dobradas (04 cestos mensais) tem permanência mínima de 4 meses. Para os outros planos, consulte as condições pelo WhatsApp."
+  - pergunta: "Posso trocar de plano?"
+    resposta_de: troca_plano
+    requer: troca_plano
+  - pergunta: "Vocês atendem empresas?"
+    resposta: "Sim. Atendemos residências e empresas com toalhas de mesa, edredons e mais, e também lavamos uniformes de empresas. Há ainda o plano Business, de lavadas e passadas, com 5 peças por semana."
+---
+{%- include servico/vars.html -%}
+{%- comment -%} Offers do schema: um por plano com preço preenchido {%- endcomment -%}
+{%- capture offers_json -%}
+{%- assign primeiro = true -%}
+{%- for categoria in site.data.negocio.planos -%}{%- for plano in categoria.itens -%}
+{%- assign preco_plano = plano.preco | strip -%}
+{%- if preco_plano != "" -%}
+{%- unless primeiro -%}, {% endunless -%}{%- assign primeiro = false -%}
+{ "@type": "Offer", "name": {{ plano.nome | append: " (" | append: categoria.categoria | append: ")" | jsonify }}, "priceCurrency": "BRL", "priceSpecification": { "@type": "UnitPriceSpecification", "price": {{ preco_plano | remove: "." | replace: ",", "." | jsonify }}, "unitText": "mês" } }
+{%- endif -%}
+{%- endfor -%}{%- endfor -%}
+{%- endcapture -%}
+{%- assign offers_json = offers_json | strip -%}
+{%- if offers_json != "" -%}{%- assign offers_json = "[" | append: offers_json | append: "]" -%}{%- endif -%}
+{%- capture subtitulo %}Somente passadas, lavadas e dobradas ou lavadas e passadas: você escolhe quantas peças por semana precisa e recebe tudo com entrega programada.{% endcapture %}
+{%- include servico/hero.html %}
+
+    <!-- PLANOS -->
+    <section class="plans svc-section" id="planos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Planos mensais</span>
+                <h2 class="section-title">Escolha seu plano</h2>
+                <p class="section-desc svc-lead">Com um plano mensal de lavanderia você não precisa juntar roupa nem lembrar de levar até a loja. São três tipos de serviço, e em todos você escolhe pela quantidade de peças por semana.</p>
+            </div>
+{%- include planos-cards.html botao="Consulte pelo WhatsApp" botao_com_preco="Quero este plano" evento="planos" %}
+
+            <p class="plans__info">Unidade: Centro</p>
+        </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="how-it-works svc-section" id="como-funciona">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Coleta semanal</span>
+                <h2 class="section-title">Como funciona a coleta semanal</h2>
+                <p class="section-desc svc-lead">Cada plano tem um limite de peças por semana e a entrega é programada. Assim a roupa não acumula: o que foi usado na semana volta limpo, sem você precisar levar até a loja.</p>
+            </div>
+            <ol class="steps steps--4">
+                <li class="step">
+                    <div class="step__number">01</div>
+                    <h3 class="step__title">Escolha o plano</h3>
+                    <p class="step__text">Veja quantas peças você usa por semana e escolha entre somente passadas, lavadas e dobradas ou lavadas e passadas.</p>
+                </li>
+                <li class="step">
+                    <div class="step__number">02</div>
+                    <h3 class="step__title">Combine pelo WhatsApp</h3>
+                    <p class="step__text">Envie uma mensagem com o plano escolhido. Respondemos rapidamente e combinamos os detalhes.</p>
+                </li>
+                <li class="step">
+                    <div class="step__number">03</div>
+                    <h3 class="step__title">Coletamos</h3>
+                    <p class="step__text">Vamos até a sua casa ou empresa buscar as peças. Sem filas, sem deslocamento.</p>
+                </li>
+                <li class="step">
+                    <div class="step__number">04</div>
+                    <h3 class="step__title">Entrega programada</h3>
+                    <p class="step__text">Peças limpas, cheirosas e perfeitamente embaladas, na rotina combinada.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- PARA QUEM É -->
+    <section class="svc-section svc-section--alt" id="para-quem">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Para quem é</span>
+                <h2 class="section-title">Um plano para cada rotina</h2>
+                <p class="section-desc svc-lead">Uma passadeira mensal, sem precisar contratar ninguém: a lavanderia por assinatura cuida da roupa da semana e você só recebe pronta.</p>
+            </div>
+            <ul class="svc-publico">
+                <li>
+                    <h3>Quem mora sozinho ou trabalha fora</h3>
+                    <p>O plano Individual cobre 10 peças por semana (40 por mês), nas versões somente passadas ou lavadas e passadas.</p>
+                </li>
+                <li>
+                    <h3>Casais</h3>
+                    <p>O plano Casal cobre 15 peças por semana (60 por mês), também em somente passadas ou lavadas e passadas.</p>
+                </li>
+                <li>
+                    <h3>Famílias</h3>
+                    <p>O plano Família, de somente passadas, cobre 20 peças por semana (80 por mês). Para lavar e dobrar, o plano de 04 cestos mensais vai até 20 peças por semana.</p>
+                </li>
+                <li>
+                    <h3>Poucas peças por semana</h3>
+                    <p>O plano Business, de lavadas e passadas, cobre 5 peças por semana (20 por mês), com lavagem completa e passadas profissionais.</p>
+                </li>
+                <li>
+                    <h3>Empresas</h3>
+                    <p>Lavanderia para empresas: atendemos residências e empresas com toalhas de mesa, edredons e mais, além de uniformes de empresas.</p>
+                </li>
+            </ul>
+            <div class="svc-texto svc-texto--centro">
+                <h3>Como escolher</h3>
+                <p>Uma conta simples ajuda: some as peças que vão para o cesto numa semana normal, como camisas, calças, vestidos e uniformes. Se der perto de 10, o Individual atende; perto de 15, o Casal; perto de 20, o Família ou o de 04 cestos. Na dúvida, chame no WhatsApp que a gente ajuda a escolher.</p>
+            </div>
+        </div>
+    </section>
+{%- include servico/faq.html %}
+{%- include servico/fim.html area=false %}

@@ -1,0 +1,21 @@
+{%- assign n_avaliacoes = d.avaliacoes | size -%}
+{%- if n_avaliacoes > 0 %}
+
+    <!-- AVALIAÇÕES -->
+    <section class="svc-section{% if include.alt %} svc-section--alt{% endif %}" id="avaliacoes">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Avaliações no Google</span>
+                <h2 class="section-title">O que dizem os clientes</h2>
+            </div>
+            <div class="svc-reviews">
+{%- for a in d.avaliacoes %}
+                <blockquote class="svc-review">
+                    <p>“{{ a.texto }}”</p>
+                    <footer>{{ a.nome }} · <a href="{{ a.url | default: e.google_perfil_url }}" target="_blank" rel="noopener">ver no Google</a></footer>
+                </blockquote>
+{%- endfor %}
+            </div>
+        </div>
+    </section>
+{%- endif %}

@@ -1,0 +1,142 @@
+---
+layout: servico
+permalink: /lavar-e-passar-roupas-criciuma
+title: "Lavar e Passar Roupas em Criciúma | Busca e Entrega | Laundry Lounge"
+description: "Lavar e passar roupas em Criciúma com busca e entrega. Roupas do dia a dia, sociais e de festa, cuidadas por tipo de tecido. Chame no WhatsApp."
+breadcrumb: "Lavar e passar roupas"
+h1: "Suas roupas lavadas e passadas, sem sair de casa"
+servico: roupas
+servico_evento: roupas
+schema_nome: "Lavar e passar roupas"
+schema_tipo: "Lavagem e passadoria de roupas"
+whatsapp_url: "https://wa.me/5548988061750?text=Ol%C3%A1!%20Quero%20saber%20sobre%20lavar%20e%20passar%20roupas."
+whatsapp_botao: "Chamar no WhatsApp"
+cta_titulo: "Roupa lavada e passada, sem sair de casa"
+cta_texto: "Conte no WhatsApp quais peças você tem e receba o orçamento. Rápido, prático e sem complicação."
+last_modified_at: 2026-10-03
+# Perguntas frequentes (regras "requer"/"sem" em _includes/servico/vars.html)
+faq:
+  - pergunta: "Em quanto tempo a roupa fica pronta?"
+    resposta: "Roupas do dia a dia ficam prontas no dia ou no dia seguinte. Consulte prazos para itens especiais como cortinas e roupas de cama."
+  - pergunta: "Vocês tiram manchas?"
+    resposta: "Tratamos manchas rebeldes com produtos especializados. Consulte valores por peça dependendo da complexidade da mancha."
+  - pergunta: "Vocês lavam terno e roupa de festa?"
+    resposta: "Sim. Lavamos ternos e vestidos de festa, além de camisas e camisetas, casacos e jaquetas, casacos de lã batida, uniformes de empresas e enxoval de bebês."
+  - pergunta: "Vocês buscam e entregam?"
+    resposta: "Sim. Buscamos e entregamos em {bairros}."
+    requer: bairros
+  - pergunta: "Vocês buscam e entregam?"
+    resposta: "Sim! Coletamos e entregamos suas roupas na sua casa."
+    sem: bairros
+  - pergunta: "Quais as formas de pagamento?"
+    resposta: "Aceitamos PIX, cartão de crédito e débito. O pagamento é realizado no momento da entrega das roupas limpas."
+---
+{%- include servico/vars.html -%}
+{%- assign n_tipos = d.tipos | size -%}
+{%- capture subtitulo %}Roupas do dia a dia, sociais e de festa, cuidadas por tipo de tecido. A gente busca, lava, passa e entrega.{% endcapture %}
+{%- include servico/hero.html %}
+
+    <!-- COMO FUNCIONA -->
+    <section class="how-it-works svc-section" id="como-funciona">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Processo simples</span>
+                <h2 class="section-title">Como funciona</h2>
+                <p class="section-desc svc-lead">Para lavar e passar roupa em Criciúma sem tirar tempo da sua semana, é só chamar no WhatsApp. A Laundry Lounge busca as peças, cuida de cada uma de acordo com o tecido e devolve tudo pronto para usar.</p>
+            </div>
+            <ol class="steps steps--4">
+                <li class="step">
+                    <div class="step__number">01</div>
+                    <h3 class="step__title">Solicite pelo WhatsApp</h3>
+                    <p class="step__text">Envie uma mensagem com o tipo de peça e quantidade. Respondemos rapidamente.</p>
+                </li>
+                <li class="step">
+                    <div class="step__number">02</div>
+                    <h3 class="step__title">Orçamento Personalizado</h3>
+                    <p class="step__text">Analisamos suas necessidades e enviamos um orçamento justo e transparente.</p>
+                </li>
+                <li class="step">
+                    <div class="step__number">03</div>
+                    <h3 class="step__title">Coletamos</h3>
+                    <p class="step__text">Vamos até a sua casa ou empresa buscar as peças. Sem filas, sem deslocamento.</p>
+                </li>
+                <li class="step">
+                    <div class="step__number">04</div>
+                    <h3 class="step__title">Entregamos Prontas</h3>
+                    <p class="step__text">Peças limpas, cheirosas e perfeitamente embaladas. Qualidade garantida.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+{%- if n_tipos > 0 %}
+
+    <!-- O QUE LAVAMOS -->
+    <section class="svc-section svc-section--alt" id="o-que-lavamos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Roupas do dia a dia &amp; de festa</span>
+                <h2 class="section-title">O que lavamos e passamos</h2>
+                <p class="section-desc svc-lead">Do uniforme da semana ao terno do casamento: a lavanderia delivery da Laundry Lounge cuida das roupas do dia a dia, sociais e de festa.</p>
+            </div>
+            <ul class="svc-tipos svc-tipos--3">
+{%- for tipo in d.tipos %}
+                <li>{{ tipo }}</li>
+{%- endfor %}
+            </ul>
+            <p class="svc-nota">Tem uma peça diferente? Mande uma foto no WhatsApp que a gente avalia.</p>
+        </div>
+    </section>
+{%- endif %}
+
+    <!-- CUIDADO COM CADA PEÇA -->
+    <section class="svc-section" id="cuidados">
+        <div class="container svc-texto">
+            <div class="section-header">
+                <span class="section-tag">Cuidado com tecidos</span>
+                <h2 class="section-title">Cada peça do seu jeito</h2>
+            </div>
+            <p>Cada peça é tratada de acordo com seu tipo e necessidade específica. Camisa social, malha do dia a dia, casaco de lã batida e vestido de festa pedem cuidados diferentes na lavagem e na hora de passar, e por isso as roupas são separadas por tipo de tecido.</p>
+            <p>Para quem trabalha de camisa, a passadoria faz diferença no dia a dia: a peça chega pronta para vestir, sem você precisar montar a tábua de passar à noite. O mesmo vale para uniformes de empresas e para o enxoval do bebê, que precisa estar sempre limpo e à mão.</p>
+            <h3>Manchas difíceis</h3>
+            <p>Tratamos manchas rebeldes com produtos especializados. Consulte valores por peça dependendo da complexidade da mancha. Se puder, conte no WhatsApp onde está a mancha e o que a causou, como vinho, gordura ou maquiagem: isso ajuda a escolher o tratamento.</p>
+            <h3>Prazo</h3>
+            <p>Roupas do dia a dia ficam prontas no dia ou no dia seguinte. Para itens especiais, como cortinas e roupas de cama, consulte o prazo.</p>
+            <h3>Antes de mandar as roupas</h3>
+            <ul class="svc-lista">
+                <li>Esvazie os bolsos.</li>
+                <li>Avise sobre manchas e o que as causou.</li>
+                <li>Conte se há peça delicada, de festa ou com bordado.</li>
+            </ul>
+        </div>
+    </section>
+{%- if preco != "" %}
+
+    <!-- PREÇO -->
+    <section class="svc-section" id="preco">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Preço</span>
+                <h2 class="section-title">Preço para lavar e passar</h2>
+            </div>
+            <div class="svc-preco">
+                <p class="svc-preco__valor">A partir de R$ {{ preco }} por {{ d.preco_unidade }}</p>
+                <p class="svc-preco__texto">O valor final depende do tipo e da quantidade de peças. Peça o orçamento pelo WhatsApp.</p>
+            </div>
+        </div>
+    </section>
+{%- endif %}
+
+    <!-- PLANOS MENSAIS -->
+    <section class="svc-section svc-section--alt" id="planos">
+        <div class="container">
+            <div class="svc-chamada">
+                <div>
+                    <h2 class="svc-chamada__titulo">Roupa toda semana? Conheça os planos mensais</h2>
+                    <p class="svc-chamada__texto">Se você manda roupa para lavar ou passar toda semana, um plano mensal deixa a rotina mais simples: há opções de somente passadas, lavadas e dobradas ou lavadas e passadas, de 5 a 20 peças por semana, com entrega programada.</p>
+                </div>
+                <a href="/planos-mensais-lavanderia" class="btn btn--primary btn--lg">Ver planos mensais</a>
+            </div>
+        </div>
+    </section>
+{%- include servico/faq.html %}
+{%- include servico/fim.html %}
