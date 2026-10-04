@@ -175,13 +175,6 @@ img { max-width: 100%; display: block; }
     width: auto;
 }
 
-.service-card__icon-img {
-    width: 56px;
-    height: 56px;
-    object-fit: contain;
-    margin-bottom: 20px;
-}
-
 .navbar__links {
     display: flex;
     gap: 32px;
@@ -524,10 +517,20 @@ img { max-width: 100%; display: block; }
 
 .services__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    max-width: 920px;
-    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 1100px) {
+    .services__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .services__grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* WhatsApp como opção secundária no card de serviço */
@@ -549,12 +552,68 @@ img { max-width: 100%; display: block; }
 }
 
 .service-card {
+    display: flex;
+    flex-direction: column;
     background: var(--white);
     border: 1px solid var(--gray-200);
     border-radius: var(--radius-lg);
-    padding: 32px;
+    padding: 24px;
     position: relative;
     transition: var(--transition);
+}
+
+/* Foto do serviço (16:10) ou, sem foto, ícone de linha num círculo azul claro */
+.service-card__foto {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: var(--radius);
+    margin-bottom: 20px;
+}
+
+.service-card__icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--blue-100);
+    color: #1d4ed8;
+    margin-bottom: 18px;
+}
+
+.service-card__icone .icone {
+    width: 26px;
+    height: 26px;
+}
+
+/* Card inteiro clicável: o link do título cobre o card; o WhatsApp fica por cima */
+.service-card__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    z-index: 1;
+}
+
+.service-card__link:focus-visible {
+    outline: none;
+}
+
+.service-card__link:focus-visible::after {
+    outline: 3px solid var(--blue-600);
+    outline-offset: 2px;
+}
+
+.service-card__cta {
+    margin-top: auto;
+}
+
+.service-card__whatsapp {
+    position: relative;
+    z-index: 2;
 }
 
 .service-card:hover {
@@ -598,14 +657,15 @@ img { max-width: 100%; display: block; }
 }
 
 .service-card__title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
+    line-height: 1.35;
     margin-bottom: 8px;
     color: var(--gray-800);
 }
 
 .service-card__features {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .service-card__features li {
@@ -1408,7 +1468,6 @@ img { max-width: 100%; display: block; }
     }
 
 
-    .services__grid,
     .plans__grid,
     .differentials__grid {
         grid-template-columns: 1fr;

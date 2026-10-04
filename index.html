@@ -90,9 +90,12 @@ last_modified_at: 2026-10-04
             </div>
             <div class="services__grid">
                 <!-- Edredons & Cobertores -->
-                <div class="service-card" data-animate>
-                    <img src="assets/img/logo-sm.webp" srcset="assets/img/logo-sm.webp 112w, assets/img/logo.webp 240w" sizes="56px" alt="" class="service-card__icon-img" width="56" height="56" loading="lazy">
-                    <h3 class="service-card__title"><a href="/lavagem-de-edredom-e-cobertor-criciuma">Edredons & Cobertores</a></h3>
+                <article class="service-card" data-animate>
+{%- include foto.html chave="edredom" classe="service-card__foto" sizes="(min-width: 1100px) 260px, (min-width: 640px) 45vw, 90vw" %}
+{%- unless foto_existe %}
+                    <span class="service-card__icone">{% include icone.html nome="cama" %}</span>
+{%- endunless %}
+                    <h3 class="service-card__title"><a href="/lavagem-de-edredom-e-cobertor-criciuma" class="service-card__link">Edredons & Cobertores</a></h3>
                     <ul class="service-card__features">
                         <li>Lavação especializada</li>
                         <li>Todos os tamanhos</li>
@@ -100,17 +103,18 @@ last_modified_at: 2026-10-04
                         <li>Higienização completa</li>
                         <li>Produtos profissionais</li>
                     </ul>
-                    <a href="/lavagem-de-edredom-e-cobertor-criciuma" class="btn btn--primary btn--block">
-                        Ver serviço
-                    </a>
+                    <span class="btn btn--primary btn--block service-card__cta" aria-hidden="true">Ver serviço</span>
                     <a href="https://wa.me/5548988061750?text=Ol%C3%A1%21%20Tenho%20interesse%20em%20lavagem%20de%20edredons%20e%20cobertores!" class="service-card__whatsapp" target="_blank" rel="noopener" data-servico="edredom" data-posicao="home-card">
-                        ou peça orçamento pelo WhatsApp
+                        ou peça pelo WhatsApp
                     </a>
-                </div>
+                </article>
                 <!-- Roupas do dia a dia & Roupas de festa -->
-                <div class="service-card" data-animate>
-                    <img src="assets/img/logo-sm.webp" srcset="assets/img/logo-sm.webp 112w, assets/img/logo.webp 240w" sizes="56px" alt="" class="service-card__icon-img" width="56" height="56" loading="lazy">
-                    <h3 class="service-card__title"><a href="/lavar-e-passar-roupas-criciuma">Roupas do dia a dia & Roupas de festa</a></h3>
+                <article class="service-card" data-animate>
+{%- include foto.html chave="roupas-passadas" classe="service-card__foto" sizes="(min-width: 1100px) 260px, (min-width: 640px) 45vw, 90vw" %}
+{%- unless foto_existe %}
+                    <span class="service-card__icone">{% include icone.html nome="camisa" %}</span>
+{%- endunless %}
+                    <h3 class="service-card__title"><a href="/lavar-e-passar-roupas-criciuma" class="service-card__link">Roupas do dia a dia & Roupas de festa</a></h3>
                     <ul class="service-card__features">
                         <li>Camisas e Camisetas</li>
                         <li>Casacos e jaquetas</li>
@@ -119,35 +123,37 @@ last_modified_at: 2026-10-04
                         <li>Uniformes de empresas</li>
                         <li>Enxoval de bebês</li>
                     </ul>
-                    <a href="/lavar-e-passar-roupas-criciuma" class="btn btn--primary btn--block">
-                        Ver serviço
-                    </a>
+                    <span class="btn btn--primary btn--block service-card__cta" aria-hidden="true">Ver serviço</span>
                     <a href="https://wa.me/5548988061750?text=Ol%C3%A1%21%20Tenho%20interesse%20em%20lavagem%20de%20roupas!" class="service-card__whatsapp" target="_blank" rel="noopener" data-servico="roupas" data-posicao="home-card">
-                        ou peça orçamento pelo WhatsApp
+                        ou peça pelo WhatsApp
                     </a>
-                </div>
+                </article>
                 <!-- Tapetes, Cortinas & Acessórios -->
-                <div class="service-card" data-animate>
-                    <img src="assets/img/logo-sm.webp" srcset="assets/img/logo-sm.webp 112w, assets/img/logo.webp 240w" sizes="56px" alt="" class="service-card__icon-img" width="56" height="56" loading="lazy">
-                    <h3 class="service-card__title"><a href="/lavagem-de-tapetes-criciuma">Tapetes, Cortinas & Acessórios</a></h3>
+                <article class="service-card" data-animate>
+{%- include foto.html chave="tapete-depois" classe="service-card__foto" sizes="(min-width: 1100px) 260px, (min-width: 640px) 45vw, 90vw" %}
+{%- unless foto_existe %}
+                    <span class="service-card__icone">{% include icone.html nome="tapete" %}</span>
+{%- endunless %}
+                    <h3 class="service-card__title"><a href="/lavagem-de-tapetes-criciuma" class="service-card__link">Tapetes, Cortinas & Acessórios</a></h3>
                     <ul class="service-card__features">
-                        <li><a href="/lavagem-de-tapetes-criciuma">Lavagem de tapetes</a></li>
+                        <li>Tapetes</li>
                         <li>Cortinas</li>
                         <li>Tênis</li>
                         <li>Mochilas</li>
                         <li>Acessórios</li>
                     </ul>
-                    <a href="/lavagem-de-tapetes-criciuma" class="btn btn--primary btn--block">
-                        Ver serviço
-                    </a>
+                    <span class="btn btn--primary btn--block service-card__cta" aria-hidden="true">Ver serviço</span>
                     <a href="https://wa.me/5548988061750?text=Ol%C3%A1%21%20Tenho%20interesse%20em%20lavagem%20de%20tapetes%2C%20cortinas%20e%20acess%C3%B3rios!" class="service-card__whatsapp" target="_blank" rel="noopener" data-servico="tapete" data-posicao="home-card">
-                        ou peça orçamento pelo WhatsApp
+                        ou peça pelo WhatsApp
                     </a>
-                </div>
+                </article>
                 <!-- Planos Mensais -->
-                <div class="service-card" data-animate>
-                    <img src="assets/img/logo-sm.webp" srcset="assets/img/logo-sm.webp 112w, assets/img/logo.webp 240w" sizes="56px" alt="" class="service-card__icon-img" width="56" height="56" loading="lazy">
-                    <h3 class="service-card__title"><a href="/planos-mensais-lavanderia">Planos Mensais</a></h3>
+                <article class="service-card" data-animate>
+{%- include foto.html chave="planos" classe="service-card__foto" sizes="(min-width: 1100px) 260px, (min-width: 640px) 45vw, 90vw" %}
+{%- unless foto_existe %}
+                    <span class="service-card__icone">{% include icone.html nome="calendario" %}</span>
+{%- endunless %}
+                    <h3 class="service-card__title"><a href="/planos-mensais-lavanderia" class="service-card__link">Planos Mensais</a></h3>
                     <ul class="service-card__features">
                         <li>Somente Passadas</li>
                         <li>Lavadas & Dobradas</li>
@@ -155,13 +161,11 @@ last_modified_at: 2026-10-04
                         <li>De 05 a 20 peças por semana</li>
                         <li>Entrega programada</li>
                     </ul>
-                    <a href="/planos-mensais-lavanderia" class="btn btn--primary btn--block">
-                        Ver planos
-                    </a>
+                    <span class="btn btn--primary btn--block service-card__cta" aria-hidden="true">Ver planos</span>
                     <a href="https://wa.me/5548988061750?text=Ol%C3%A1!%20Quero%20conhecer%20os%20planos%20mensais." class="service-card__whatsapp" target="_blank" rel="noopener" data-servico="planos" data-posicao="home-card">
-                        ou peça orçamento pelo WhatsApp
+                        ou peça pelo WhatsApp
                     </a>
-                </div>
+                </article>
             </div>
         </div>
     </section>
