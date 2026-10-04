@@ -496,7 +496,7 @@ img { max-width: 100%; display: block; }
 
 .section-desc {
     font-size: 1.05rem;
-    color: var(--gray-500);
+    color: var(--gray-600);
     max-width: 550px;
 }
 
