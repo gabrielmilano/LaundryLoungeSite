@@ -1,0 +1,12 @@
+{
+  "name": "laundry-lounge-fotos",
+  "private": true,
+  "type": "module",
+  "description": "Converte fotos do celular para WebP 1600x1000 + 800x500 (assets/img/fotos)",
+  "scripts": {
+    "converter": "node converter.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.34.0"
+  }
+}

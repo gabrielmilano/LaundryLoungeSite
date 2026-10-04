@@ -1,5 +1,6 @@
 {%- assign e = site.data.negocio.empresa -%}
-{%- assign fachada = site.data.negocio.fotos.fachada | strip %}
+{%- include foto.html chave="fachada" verificar=true -%}
+{%- assign fachada = foto_url %}
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",

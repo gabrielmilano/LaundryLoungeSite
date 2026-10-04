@@ -12,6 +12,7 @@ schema_tipo: "Lavagem de tapetes"
 cta_titulo: "Seu tapete limpo, sem bagunça em casa"
 cta_texto: "Mande uma foto e as medidas do tapete no WhatsApp e receba o orçamento."
 whatsapp_url: "https://wa.me/5548988061750?text=Ol%C3%A1!%20Quero%20or%C3%A7amento%20para%20lavagem%20de%20tapete."
+foto_hero: tapete-depois
 last_modified_at: 2026-10-03
 # Perguntas frequentes (regras "requer"/"sem" em _includes/servico/vars.html)
 faq:
@@ -33,7 +34,6 @@ faq:
 {%- include servico/vars.html -%}
 {%- assign t = d -%}
 {%- assign n_tipos = t.tipos | size -%}
-{%- assign n_antes_depois = t.antes_depois | size -%}
 {%- capture subtitulo %}Lavamos, secamos em máquina e devolvemos seu tapete limpo{% if prazo != "" %} em {{ prazo }}{% endif %}. Sem bagunça em casa.{% endcapture %}
 {%- include servico/hero.html %}
 
@@ -99,7 +99,9 @@ faq:
         </div>
     </section>
 {%- endif %}
-{%- if n_antes_depois > 0 %}
+{%- include foto.html chave="tapete-antes" verificar=true -%}{%- assign tem_antes = foto_existe -%}
+{%- include foto.html chave="tapete-depois" verificar=true -%}{%- assign tem_depois = foto_existe -%}
+{%- if tem_antes and tem_depois %}
 
     <!-- 6. ANTES E DEPOIS -->
     <section class="svc-section svc-section--alt" id="antes-e-depois">
@@ -109,21 +111,18 @@ faq:
                 <h2 class="section-title">Antes e depois</h2>
             </div>
             <div class="svc-ad">
-{%- for par in t.antes_depois %}
                 <figure class="svc-ad__par">
                     <div class="svc-ad__fotos">
                         <div class="svc-ad__foto">
-                            <img src="{{ par.antes }}" alt="{{ par.alt | escape }} antes da lavagem na Laundry Lounge" width="{{ par.largura }}" height="{{ par.altura }}" loading="lazy">
+                            {% include foto.html chave="tapete-antes" sizes="(min-width: 900px) 540px, 50vw" %}
                             <span class="svc-ad__rotulo">Antes</span>
                         </div>
                         <div class="svc-ad__foto">
-                            <img src="{{ par.depois }}" alt="{{ par.alt | escape }} limpo após lavagem na Laundry Lounge em Criciúma" width="{{ par.largura }}" height="{{ par.altura }}" loading="lazy">
+                            {% include foto.html chave="tapete-depois" sizes="(min-width: 900px) 540px, 50vw" %}
                             <span class="svc-ad__rotulo">Depois</span>
                         </div>
                     </div>
-                    <figcaption>{{ par.alt }}</figcaption>
                 </figure>
-{%- endfor %}
             </div>
         </div>
     </section>

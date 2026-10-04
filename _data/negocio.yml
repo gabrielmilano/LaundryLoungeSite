@@ -60,10 +60,41 @@ rastreamento:
   google_ads_id: "AW-632418375"
   ga4_id: ""                # ex.: "G-ABC123XYZ" — vazio = GA4 desligado
 
-# --- Fotos gerais ---
+# --- Fotos reais da loja ---
+# Basta colocar o arquivo em /assets/img/fotos/ com o nome abaixo (WebP, 1600×1000) e publicar:
+# o site detecta sozinho. Sem o arquivo, cada lugar mostra a versão sem foto.
+# Para converter as fotos do celular: ferramentas/fotos/LEIA-ME.md
 fotos:
-  fachada: ""               # [FOTO-FACHADA] ex.: "/assets/img/fachada.jpg" — entra no schema da home
-  compartilhamento: "/assets/img/og-laundry-lounge.jpg"   # 1200×630 (WhatsApp/redes). Provisória com o logo: trocar por foto real da loja
+  compartilhamento: "/assets/img/og-laundry-lounge.jpg"   # 1200×630 (WhatsApp/redes). Provisória com o logo
+  pasta: "/assets/img/fotos/"
+  lista:
+    fachada:
+      arquivo: "fachada.webp"
+      alt: "Fachada da Laundry Lounge na Rua Palamede Milioli, no Centro de Criciúma"
+    balcao:
+      arquivo: "balcao.webp"
+      alt: "Balcão de atendimento da Laundry Lounge no Centro de Criciúma"
+    maquinas:
+      arquivo: "maquinas.webp"
+      alt: "Máquinas de lavar de grande capacidade da Laundry Lounge"
+    equipe:
+      arquivo: "equipe.webp"
+      alt: "Equipe da Laundry Lounge no balcão da loja"
+    edredom:
+      arquivo: "edredom.webp"
+      alt: "Edredom limpo e dobrado na Laundry Lounge"
+    tapete-antes:
+      arquivo: "tapete-antes.webp"
+      alt: "Tapete antes da lavagem na Laundry Lounge"
+    tapete-depois:
+      arquivo: "tapete-depois.webp"
+      alt: "Tapete limpo após a lavagem na Laundry Lounge em Criciúma"
+    roupas-passadas:
+      arquivo: "roupas-passadas.webp"
+      alt: "Roupas lavadas e passadas, penduradas na Laundry Lounge"
+    planos:
+      arquivo: "planos.webp"
+      alt: "Roupas lavadas e dobradas, prontas para entrega, na Laundry Lounge"
 
 # --- Serviços: marcadores pendentes ---
 servicos:
@@ -78,20 +109,6 @@ servicos:
       - "Tapete felpudo"
       - "Tapete de banheiro"
       - "Tapete infantil"
-    # Foto real do hero (WebP/AVIF). Vazio = hero sem foto.
-    foto_hero:
-      src: ""               # ex.: "/assets/img/tapetes/hero.webp"
-      alt: ""               # ex.: "Tapete felpudo limpo após lavagem na Laundry Lounge em Criciúma"
-      largura: 0
-      altura: 0
-    # Fotos reais de antes e depois (2 a 4 pares). Vazio = seção escondida.
-    # Formato de cada item:
-    #   - antes: "/assets/img/tapetes/antes-1.webp"
-    #     depois: "/assets/img/tapetes/depois-1.webp"
-    #     alt: "Tapete de sala"
-    #     largura: 800
-    #     altura: 600
-    antes_depois: []
     # Avaliações reais do Google que citam tapete (1 a 3). Vazio = seção escondida.
     # Formato de cada item:
     #   - nome: "Maria S."
@@ -111,11 +128,6 @@ servicos:
       - "Cobertor"
       - "Lençóis"
       - "Fronhas"
-    foto_hero:
-      src: ""
-      alt: ""
-      largura: 0
-      altura: 0
     # Avaliações reais do Google que citam edredom (mesmo formato de tapetes). Vazio = seção escondida.
     avaliacoes: []
 
@@ -130,19 +142,9 @@ servicos:
       - "Ternos e vestidos de festa"
       - "Uniformes de empresas"
       - "Enxoval de bebês"
-    foto_hero:
-      src: ""
-      alt: ""
-      largura: 0
-      altura: 0
 
   planos:
     troca_plano: ""         # [CONFIRMAR COM A LOJA] resposta para "Posso trocar de plano?" — vazio = pergunta escondida
-    foto_hero:
-      src: ""
-      alt: ""
-      largura: 0
-      altura: 0
 
 # --- Planos mensais (copiados da home; a home e /planos-mensais-lavanderia usam esta mesma lista) ---
 # preco: [PREÇO DE CADA PLANO] só o número, ex.: "149,90" (por mês). Vazio = "Sob consulta".

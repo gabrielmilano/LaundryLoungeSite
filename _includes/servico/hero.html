@@ -18,7 +18,7 @@
             </div>
 {%- if foto_hero != "" %}
             <div class="svc-hero__media">
-                <img src="{{ foto_hero }}" alt="{{ d.foto_hero.alt | escape }}" width="{{ d.foto_hero.largura }}" height="{{ d.foto_hero.altura }}" fetchpriority="high">
+                {% include foto.html chave=page.foto_hero prioridade=true sizes="(min-width: 900px) 45vw, 100vw" %}
             </div>
 {%- endif %}
         </div>

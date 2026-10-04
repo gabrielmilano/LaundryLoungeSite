@@ -12,3 +12,8 @@ desktop.ini
 # Temporary files
 *.tmp
 *.temp
+
+# Fotos: originais do celular e dependências do conversor
+ferramentas/fotos/originais/
+ferramentas/fotos/node_modules/
+ferramentas/fotos/package-lock.json

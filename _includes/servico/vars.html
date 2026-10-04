@@ -11,7 +11,8 @@
 {%- assign prazo = d.prazo | strip -%}
 {%- assign preco = d.preco | strip -%}
 {%- assign bairros = e.bairros_entrega | strip -%}
-{%- assign foto_hero = d.foto_hero.src | strip -%}
+{%- include foto.html chave=page.foto_hero verificar=true -%}
+{%- assign foto_hero = foto_url -%}
 {%- assign url_pagina = page.url | absolute_url -%}
 
 {%- assign faq_visiveis = "" | split: "" -%}
