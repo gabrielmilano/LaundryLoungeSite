@@ -48,7 +48,8 @@ empresa:
   google_nota: "4,8"
   google_avaliacoes: 91
   # Link do Perfil da Empresa no Google (place ID ChIJdStia3mDIZURWYNnazwHXFo)
-  google_perfil_url: "https://www.google.com/maps/search/?api=1&query=Lavanderia%20Laundry%20Lounge&query_place_id=ChIJdStia3mDIZURWYNnazwHXFo"
+  google_perfil_url: "https://www.google.com/maps/place/?q=place_id:ChIJdStia3mDIZURWYNnazwHXFo"
+  google_avaliar_url: "https://search.google.com/local/writereview?placeid=ChIJdStia3mDIZURWYNnazwHXFo"
   mapa_embed_url: "https://maps.google.com/maps?q=Lavanderia%20Laundry%20Lounge%2C%20Rua%20Palamede%20Milioli%2C%20192%2C%20Crici%C3%BAma%20-%20SC&z=17&hl=pt-BR&output=embed"
 
   # [BAIRROS E CIDADES] com busca e entrega — vale para todas as páginas de serviço

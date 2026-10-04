@@ -26,7 +26,7 @@ last_modified_at: 2026-10-04
     <header class="navbar" id="navbar">
         <div class="container navbar__inner">
             <a href="#" class="navbar__logo">
-                <img src="assets/img/logo-sm.webp" srcset="assets/img/logo-sm.webp 112w, assets/img/logo.webp 240w" sizes="54px" alt="" class="navbar__logo-img" width="54" height="36">
+                <img src="assets/img/logo-rodape-sm.webp" srcset="assets/img/logo-rodape-sm.webp 96w, assets/img/logo-rodape.webp 240w" sizes="47px" alt="" class="navbar__logo-img" width="47" height="36">
                 <span class="logo-text">Laundry <span class="accent">Lounge</span></span>
             </a>
             <nav class="navbar__links">
@@ -47,19 +47,15 @@ last_modified_at: 2026-10-04
     </header>
 
     <!-- HERO -->
-    <section class="hero" id="hero">
-        <div class="bubbles">
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-        </div>
+{%- include foto.html chave="fachada" verificar=true -%}
+{%- if foto_existe -%}{%- assign hero_foto = "fachada" -%}{%- else -%}
+{%- include foto.html chave="balcao" verificar=true -%}{%- if foto_existe -%}{%- assign hero_foto = "balcao" -%}{%- else -%}{%- assign hero_foto = "" -%}{%- endif -%}
+{%- endif -%}
+{%- assign e = site.data.negocio.empresa %}
+    <section class="hero{% if hero_foto != '' %} hero--foto{% endif %}" id="hero">
+{%- if hero_foto != "" %}
+        {% include foto.html chave=hero_foto classe="hero__foto" prioridade=true sizes="100vw" %}
+{%- endif %}
         <div class="container hero__content">
             <div class="hero__text">
                 <span class="hero__badge">Lavanderia Especializada</span>
@@ -78,34 +74,9 @@ last_modified_at: 2026-10-04
                         Ver Serviços
                     </a>
                 </div>
-            </div>
-            <div class="hero__visual">
-                <div class="hero__card">
-                    <p class="hero__card-title">Como funciona</p>
-                    <div class="hero__card-steps">
-                        <div class="hero__card-step">
-                            <div class="hero__card-step-icon">1</div>
-                            <div class="hero__card-step-text">
-                                <p class="hero__card-step-name">Agende</p>
-                                <p>WhatsApp rápido</p>
-                            </div>
-                        </div>
-                        <div class="hero__card-step">
-                            <div class="hero__card-step-icon">2</div>
-                            <div class="hero__card-step-text">
-                                <p class="hero__card-step-name">Coletamos</p>
-                                <p>Vamos até você</p>
-                            </div>
-                        </div>
-                        <div class="hero__card-step">
-                            <div class="hero__card-step-icon">3</div>
-                            <div class="hero__card-step-text">
-                                <p class="hero__card-step-name">Entregamos</p>
-                                <p>Roupas prontas</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <a class="hero__prova" href="{{ e.google_perfil_url }}" target="_blank" rel="noopener">
+                    {% include icone.html nome="estrela" classe="hero__estrela" %}<strong>{{ e.google_nota }}</strong> · {{ e.google_avaliacoes }} avaliações no Google
+                </a>
             </div>
         </div>
     </section>

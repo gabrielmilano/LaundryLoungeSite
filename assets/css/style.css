@@ -167,6 +167,7 @@ img { max-width: 100%; display: block; }
 .navbar__logo-img {
     height: 36px;
     width: auto;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
 }
 
 .footer__logo-img {
@@ -266,13 +267,54 @@ img { max-width: 100%; display: block; }
 
 /* === HERO === */
 .hero {
-    min-height: 100vh;
+    min-height: min(88vh, 760px);
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-600) 100%);
+    /* degradê da marca um pouco mais escuro: texto branco com contraste >= 4.5:1 em todo o fundo */
+    background: linear-gradient(135deg, var(--blue-800) 0%, #1d4ed8 100%);
     position: relative;
     overflow: hidden;
-    padding: 100px 0 80px;
+    padding: 120px 0 80px;
+}
+
+/* Topo com foto real: foto cobrindo o fundo + camada escura (contraste >= 4.5:1 mesmo sobre foto branca) */
+.hero__foto {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero--foto::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(12, 27, 51, 0.82) 0%, rgba(12, 27, 51, 0.7) 100%);
+}
+
+/* Prova social abaixo dos botões */
+.hero__prova {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    margin-top: 20px;
+    color: var(--white);
+    font-size: 0.95rem;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.5);
+    text-underline-offset: 4px;
+}
+
+.hero__prova:hover {
+    text-decoration-color: var(--white);
+}
+
+.hero__estrela {
+    width: 20px;
+    height: 20px;
+    color: #fbbf24;
 }
 
 /* === BUBBLES === */
@@ -392,9 +434,13 @@ img { max-width: 100%; display: block; }
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1fr;
     align-items: center;
+    width: 100%;
+}
+
+.hero__text {
+    max-width: 680px;
 }
 
 .hero__text {
@@ -421,7 +467,7 @@ img { max-width: 100%; display: block; }
 
 .hero__subtitle {
     font-size: 1.1rem;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.92);
     margin-bottom: 32px;
     line-height: 1.7;
     max-width: 480px;
@@ -431,70 +477,6 @@ img { max-width: 100%; display: block; }
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
-}
-
-.hero__visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero__card {
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    box-shadow: var(--shadow-lg);
-    width: 100%;
-    max-width: 380px;
-}
-
-.hero__card-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--gray-800);
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.hero__card-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.hero__card-step {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px;
-    background: var(--blue-50);
-    border-radius: var(--radius);
-}
-
-.hero__card-step-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--blue-600);
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    flex-shrink: 0;
-}
-
-.hero__card-step-text h4,
-.hero__card-step-text .hero__card-step-name {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--gray-800);
-    margin-bottom: 2px;
-}
-
-.hero__card-step-text p {
-    font-size: 0.8rem;
-    color: var(--gray-500);
 }
 
 /* === SECTION UTILS === */
@@ -1287,9 +1269,6 @@ img { max-width: 100%; display: block; }
         justify-content: center;
     }
 
-    .hero__visual {
-        display: none;
-    }
 
     .services__grid,
     .plans__grid,
