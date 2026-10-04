@@ -528,8 +528,20 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 640px) {
+    /* celular: cards em carrossel com encaixe (todo o conteúdo continua, a página fica mais curta) */
     .services__grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: 84%;
+        gap: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .service-card {
+        scroll-snap-align: start;
     }
 }
 
@@ -1552,6 +1564,44 @@ img { max-width: 100%; display: block; }
     .anima [data-animate]:not(.animated) {
         opacity: 0;
         transform: translateY(12px);
+    }
+}
+
+/* === CELULAR: HOME MAIS COMPACTA === */
+@media (max-width: 768px) {
+    .services,
+    .how-it-works,
+    .differentials,
+    .plans,
+    .faq,
+    .map-section,
+    .cta-final {
+        padding: 64px 0;
+    }
+
+    .section-header {
+        margin-bottom: 36px;
+    }
+
+    /* Como funciona: número ao lado do texto */
+    .how-it-works .step {
+        display: grid;
+        grid-template-columns: 52px 1fr;
+        column-gap: 16px;
+        align-items: start;
+        text-align: left;
+    }
+
+    .how-it-works .step__number {
+        grid-row: span 2;
+        width: 52px;
+        height: 52px;
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    .how-it-works .steps {
+        gap: 24px;
     }
 }
 
