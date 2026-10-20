@@ -142,6 +142,7 @@ servicos:
     avaliacoes: []
 
   roupas:
+    faz_vestido_noiva: false  # FAZ_VESTIDO_NOIVA — true só depois que a loja confirmar; liga a frase do vestido de noiva
     preco: ""               # [PREÇO] só o número, ex.: "4,50" — liga a seção Preço e o schema
     preco_unidade: "peça"   # "peça" ou "cesto"
     # Lista copiada do card "Roupas do dia a dia & Roupas de festa" da home
