@@ -1,0 +1,23 @@
+{%- comment -%}
+  Seção "Bairros que atendemos" (home e final das páginas de serviço).
+  Só aparece quando _data/negocio.yml > empresa.bairros_atendidos tiver itens.
+{%- endcomment -%}
+{%- assign lista_bairros = site.data.negocio.empresa.bairros_atendidos -%}
+{%- if lista_bairros.size > 0 %}
+
+    <!-- BAIRROS QUE ATENDEMOS -->
+    <section class="bairros" id="bairros" aria-labelledby="bairros-titulo">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Busca e entrega</span>
+                <h2 class="section-title" id="bairros-titulo">Bairros que atendemos</h2>
+                <p class="section-desc">Buscamos e entregamos nestes bairros de {{ site.data.negocio.empresa.cidade }}. Não encontrou o seu? Chame no WhatsApp que a gente verifica.</p>
+            </div>
+            <ul class="bairros__lista">
+{%- for bairro in lista_bairros %}
+                <li>{{ bairro }}</li>
+{%- endfor %}
+            </ul>
+        </div>
+    </section>
+{%- endif %}

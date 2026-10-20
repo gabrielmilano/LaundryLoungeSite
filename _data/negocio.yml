@@ -53,9 +53,13 @@ empresa:
   google_avaliar_url: "https://search.google.com/local/writereview?placeid=ChIJdStia3mDIZURWYNnazwHXFo"
   mapa_embed_url: "https://maps.google.com/maps?q=Lavanderia%20Laundry%20Lounge%2C%20Rua%20Palamede%20Milioli%2C%20192%2C%20Crici%C3%BAma%20-%20SC&z=17&hl=pt-BR&output=embed"
 
-  # [BAIRROS E CIDADES] com busca e entrega — vale para todas as páginas de serviço
-  # ex.: "Centro, Pio Corrêa, Michel e Içara". Vazio = seção "Área atendida" vira "Onde fica a loja"
-  bairros_entrega: ""
+  # BAIRROS_ATENDIDOS com busca e entrega — um bairro por linha, só os que a loja confirmar. Ex.:
+  #   bairros_atendidos:
+  #     - "Centro"
+  #     - "Pio Corrêa"
+  # Lista vazia ([]) = a seção "Bairros que atendemos" (home e páginas de serviço) e a pergunta
+  # dos bairros ficam escondidas, e "Área atendida" vira "Onde fica a loja".
+  bairros_atendidos: []
 
 # --- Avaliações reais do Google (textos exatos; sem nome, assinadas "Cliente no Google") ---
 # Aparecem na home e, em versão compacta, nas páginas de serviço. Sem marcação de schema.

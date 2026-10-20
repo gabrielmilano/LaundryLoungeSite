@@ -10,7 +10,7 @@
 {%- assign d = site.data.negocio.servicos[page.servico] -%}
 {%- assign prazo = d.prazo | strip -%}
 {%- assign preco = d.preco | strip -%}
-{%- assign bairros = e.bairros_entrega | strip -%}
+{%- include bairros-texto.html -%}
 {%- include foto.html chave=page.foto_hero verificar=true -%}
 {%- assign foto_hero = foto_url -%}
 {%- assign url_pagina = page.url | absolute_url -%}

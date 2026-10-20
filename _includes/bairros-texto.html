@@ -1,0 +1,15 @@
+{%- comment -%}
+  Monta a variável "bairros" (texto corrido, ex.: "Centro, Pio Corrêa e Michel") a partir de
+  _data/negocio.yml > empresa.bairros_atendidos. Lista vazia = bairros "".
+{%- endcomment -%}
+{%- assign lista_bairros = site.data.negocio.empresa.bairros_atendidos -%}
+{%- assign n_bairros = lista_bairros | size -%}
+{%- if n_bairros == 0 -%}
+  {%- assign bairros = "" -%}
+{%- elsif n_bairros == 1 -%}
+  {%- assign bairros = lista_bairros | first | strip -%}
+{%- else -%}
+  {%- assign ultimo_bairro = lista_bairros | last | strip -%}
+  {%- assign qtd_antes = n_bairros | minus: 1 -%}
+  {%- assign bairros = lista_bairros | slice: 0, qtd_antes | join: ", " | append: " e " | append: ultimo_bairro -%}
+{%- endif -%}
