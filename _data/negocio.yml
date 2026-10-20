@@ -71,7 +71,9 @@ avaliacoes_google:
 # --- Medição ---
 rastreamento:
   google_ads_id: "AW-632418375"
-  ga4_id: ""                # ex.: "G-ABC123XYZ" — vazio = GA4 desligado
+  # Só referência: o GA4 recebe os dados pela tag do Google Ads, combinada com esta propriedade
+  # no painel do Google. O site não chama gtag('config') para este ID (duplicaria o page_view).
+  ga4_id: "G-Y0NXRK9QTJ"
 
 # --- Fotos reais da loja ---
 # Basta colocar o arquivo em /assets/img/fotos/ com o nome abaixo (WebP, 1600×1000) e publicar:
