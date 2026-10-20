@@ -15,7 +15,7 @@
                     <span class="reviews__numero">{{ e.google_nota }}</span>
                     <span>
                         <span class="reviews__estrelas" aria-hidden="true">{% for i in (1..5) %}{% include icone.html nome="estrela" %}{% endfor %}</span>
-                        <span class="reviews__total">{{ e.google_avaliacoes }} avaliações no Google</span>
+                        <span class="reviews__total">{{ e.google_avaliacoes_texto | slice: 0 | upcase }}{{ e.google_avaliacoes_texto | slice: 1, 200 }}</span>
                     </span>
                 </div>
             </div>

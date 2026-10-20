@@ -46,7 +46,8 @@ empresa:
 
   # Avaliações do Google (texto da faixa de confiança). Atualize quando mudar.
   google_nota: "4,8"
-  google_avaliacoes: 91
+  # Texto arredondado para não ficar desatualizado (o Perfil tinha 95 em 20/10/2026)
+  google_avaliacoes_texto: "mais de 90 avaliações no Google"
   # Link do Perfil da Empresa no Google (place ID ChIJdStia3mDIZURWYNnazwHXFo)
   google_perfil_url: "https://www.google.com/maps/place/?q=place_id:ChIJdStia3mDIZURWYNnazwHXFo"
   google_avaliar_url: "https://search.google.com/local/writereview?placeid=ChIJdStia3mDIZURWYNnazwHXFo"
