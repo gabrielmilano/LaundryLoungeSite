@@ -2,7 +2,7 @@
 layout: servico
 permalink: /lavagem-de-tapetes-criciuma
 title: "Lavagem de Tapetes em Criciúma | Busca e Entrega | Laundry Lounge"
-description: "Lavagem de tapetes em Criciúma com busca e entrega. Lavamos e secamos em máquina, sem bagunça na sua casa. Peça orçamento pelo WhatsApp."
+description: "Lavagem e lavação de tapetes em Criciúma com busca e entrega. Lavamos e secamos em máquina, sem bagunça na sua casa. Peça orçamento pelo WhatsApp."
 breadcrumb: "Lavagem de tapetes"
 h1: "Lavagem de tapetes em Criciúma, com busca e entrega"
 servico: tapetes
@@ -16,6 +16,8 @@ foto_hero: tapete-depois
 last_modified_at: 2026-10-03
 # Perguntas frequentes (regras "requer"/"sem" em _includes/servico/vars.html)
 faq:
+  - pergunta: "Onde lavar tapete em Criciúma?"
+    resposta: "Na Laundry Lounge, no Centro, ou pedindo busca e entrega pelo WhatsApp."
   - pergunta: "Quanto tempo demora para lavar um tapete?"
     resposta: "O prazo é de {prazo} a partir da retirada. Tapetes grandes ou muito sujos podem levar um pouco mais; avisamos no orçamento."
     requer: prazo
@@ -34,7 +36,7 @@ faq:
 {%- include servico/vars.html -%}
 {%- assign t = d -%}
 {%- assign n_tipos = t.tipos | size -%}
-{%- capture subtitulo %}Lavamos, secamos em máquina e devolvemos seu tapete limpo{% if prazo != "" %} em {{ prazo }}{% endif %}. Sem bagunça em casa.{% endcapture %}
+{%- capture subtitulo %}Lavação de tapete com secagem em máquina: devolvemos seu tapete limpo{% if prazo != "" %} em {{ prazo }}{% endif %}. Sem bagunça em casa.{% endcapture %}
 {%- include servico/hero.html %}
 
     <!-- 3. COMO FUNCIONA -->
@@ -43,7 +45,7 @@ faq:
             <div class="section-header">
                 <span class="section-tag">Passo a passo</span>
                 <h2 class="section-title">Como funciona</h2>
-                <p class="section-desc svc-lead">A Laundry Lounge faz a lavagem de tapete em Criciúma direto da loja no Centro. O tapete é lavado e seco em máquina: você não precisa ocupar o quintal nem esperar dias até ele secar no varal.</p>
+                <p class="section-desc svc-lead">A Laundry Lounge faz a lavagem e a lavação de tapete em Criciúma direto da loja no Centro. O tapete é lavado e seco em máquina: você não precisa ocupar o quintal nem esperar dias até ele secar no varal.</p>
             </div>
             <ol class="steps steps--3">
                 <li class="step">
@@ -83,6 +85,32 @@ faq:
         </div>
     </section>
 {%- endif %}
+
+    <!-- COMO É FEITA A LAVAÇÃO -->
+    <section class="svc-section" id="como-e-feita">
+        <div class="container svc-texto">
+            <div class="section-header">
+                <span class="section-tag">Lavação de tapete</span>
+                <h2 class="section-title">Como é feita a lavação</h2>
+            </div>
+            <p>Tudo começa pela foto e pelas medidas que você manda no WhatsApp. Com elas a gente identifica o tipo de tapete e combina com você se ele vai ser buscado em casa ou deixado na loja.</p>
+            <p>Na loja, cada tapete é tratado de acordo com o tipo e a necessidade, como fazemos com todas as peças. A lavagem é feita em máquina e a secagem também, então o tapete volta para casa seco, sem passar dias estendido no varal ou no quintal.</p>
+            <h3>Por que a secagem em máquina faz diferença</h3>
+            <p>Tapete que demora a secar é o que mais pega cheiro de umidade. Um tapete grosso pode ficar úmido por dentro mesmo parecendo seco por fora, e é essa umidade escondida que deixa cheiro de mofo. Secando em máquina, ele chega seco por inteiro e pronto para voltar para o chão.</p>
+            <h3>Cuidados com tapete felpudo</h3>
+            <p>O tapete felpudo prende mais poeira e fios entre os pelos e é o que mais sofre quando é lavado no quintal: o pelo amassa e ele leva muito tempo para secar. Entre uma lavagem e outra, aspire nos dois sentidos do pelo, sacuda ao ar livre quando der e gire o tapete de tempos em tempos para ele gastar por igual.</p>
+            <h3>Tapete com pelo de pet</h3>
+            <p>Em casa com cachorro ou gato, o pelo se prende nas fibras e o aspirador nem sempre tira tudo. Vale aspirar com mais frequência e, quando mandar o tapete para a lavanderia, contar no WhatsApp que há pet em casa: assim a gente já sabe o que vai encontrar.</p>
+            <h3>Onde lavar tapete em Criciúma</h3>
+            <p>Na Laundry Lounge, na {{ e.rua }}, {{ e.bairro }}. Você pode deixar o tapete na loja ou pedir busca e entrega pelo WhatsApp, sem precisar carregar o tapete até o carro.</p>
+            <h3>Antes de mandar o tapete</h3>
+            <ul class="svc-lista">
+                <li>Tire uma foto do tapete inteiro e, se houver, das manchas.</li>
+                <li>Meça o comprimento e a largura.</li>
+                <li>Conte no WhatsApp se há pet em casa ou alguma mancha específica.</li>
+            </ul>
+        </div>
+    </section>
 {%- if preco != "" %}
 
     <!-- 5. PREÇO -->
