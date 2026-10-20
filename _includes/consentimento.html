@@ -1,0 +1,91 @@
+{%- comment -%}
+  Aviso de cookies (LGPD) + Google Consent Mode v2.
+  O padrão "denied" é declarado em _includes/gtag.html, antes do gtag.js.
+  Aceitar → analytics_storage "granted" (anúncios continuam "denied"). Recusar → tudo negado.
+  A escolha fica em localStorage ("ll_consentimento"). Incluir antes do </body> nas páginas com a tag.
+{%- endcomment %}
+    <!-- AVISO DE COOKIES -->
+    <style>
+        .consent {
+            position: fixed;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            z-index: 1000;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px 16px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px 16px;
+            border-radius: 14px;
+            background: #0c1b33;
+            color: #fff;
+            box-shadow: 0 8px 30px rgba(12, 27, 51, 0.35);
+            font: 500 0.92rem/1.45 'Inter', -apple-system, 'Segoe UI', sans-serif;
+        }
+        .consent[hidden] { display: none; }
+        .consent__texto { margin: 0; }
+        .consent__texto a { color: #bfdbfe; text-decoration: underline; text-underline-offset: 2px; }
+        .consent__acoes { display: flex; gap: 8px; }
+        .consent__btn {
+            min-height: 40px;
+            padding: 8px 18px;
+            border-radius: 999px;
+            border: 1px solid #fff;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .consent__btn--aceitar { background: #fff; color: #0c1b33; }
+        .consent__btn--recusar { background: transparent; color: #fff; }
+        .consent__btn:hover { opacity: 0.9; }
+        .consent a:focus-visible,
+        .consent__btn:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+        /* Enquanto o aviso está aberto, o botão do WhatsApp sobe para não ficar coberto */
+        html.consent-aberto .whatsapp-float { bottom: calc(var(--consent-altura, 0px) + 24px); }
+        @media (max-width: 600px) {
+            .consent { left: 8px; right: 8px; bottom: 8px; padding: 12px; text-align: center; }
+            .consent__acoes { width: 100%; }
+            .consent__btn { flex: 1; }
+            html.consent-aberto .whatsapp-float { bottom: calc(var(--consent-altura, 0px) + 16px); }
+        }
+    </style>
+    <div class="consent" id="consentimento" role="region" aria-label="Aviso de cookies" hidden>
+        <p class="consent__texto">Usamos cookies para entender como o site é usado. <a href="/politica-de-privacidade-google-ads/">Política de privacidade</a></p>
+        <div class="consent__acoes">
+            <button type="button" class="consent__btn consent__btn--aceitar" data-consent="aceitar">Aceitar</button>
+            <button type="button" class="consent__btn consent__btn--recusar" data-consent="recusar">Recusar</button>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var CHAVE = 'll_consentimento';
+            var aviso = document.getElementById('consentimento');
+            var raiz = document.documentElement;
+            var escolha = null;
+            try { escolha = localStorage.getItem(CHAVE); } catch (e) {}
+            if (!aviso || escolha === 'aceito' || escolha === 'recusado') return;
+
+            function ajustar() { raiz.style.setProperty('--consent-altura', aviso.offsetHeight + 8 + 'px'); }
+            aviso.hidden = false;
+            raiz.classList.add('consent-aberto');
+            ajustar();
+            window.addEventListener('resize', ajustar);
+
+            aviso.addEventListener('click', function (ev) {
+                var botao = ev.target.closest('[data-consent]');
+                if (!botao) return;
+                var aceitou = botao.getAttribute('data-consent') === 'aceitar';
+                if (aceitou && typeof gtag === 'function') {
+                    gtag('consent', 'update', { analytics_storage: 'granted' });
+                }
+                try { localStorage.setItem(CHAVE, aceitou ? 'aceito' : 'recusado'); } catch (e) {}
+                aviso.hidden = true;
+                raiz.classList.remove('consent-aberto');
+                window.removeEventListener('resize', ajustar);
+            });
+        })();
+    </script>
