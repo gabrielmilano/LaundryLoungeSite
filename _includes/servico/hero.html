@@ -13,6 +13,7 @@
                     </ol>
                 </nav>
                 <h1 class="svc-hero__title">{{ page.h1 }}</h1>
+                <p class="svc-hero__destaque">Buscamos e entregamos na sua casa <span aria-hidden="true">·</span> {{ e.bairro }} de {{ e.cidade }} <span aria-hidden="true">·</span> Nota {{ e.google_nota }} no Google</p>
                 <p class="svc-hero__subtitle">{{ subtitulo | strip }}</p>
                 <div class="svc-hero__actions">
                     <a href="{{ page.whatsapp_url }}" class="btn btn--white btn--lg" target="_blank" rel="noopener" data-servico="{{ page.servico_evento }}" data-posicao="hero">{{ page.whatsapp_botao | default: "Pedir orçamento no WhatsApp" }}</a>

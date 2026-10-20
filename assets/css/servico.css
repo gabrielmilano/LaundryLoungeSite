@@ -54,6 +54,20 @@
     margin-bottom: 20px;
 }
 
+/* Linha de destaque logo abaixo do H1 (busca e entrega · Centro · nota) */
+.svc-hero__destaque {
+    display: inline-block;
+    margin: -4px 0 18px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--white);
+}
+
 .svc-hero__subtitle {
     font-size: 1.15rem;
     color: rgba(255, 255, 255, 0.92);
@@ -599,6 +613,11 @@
 }
 
 @media (max-width: 480px) {
+    .svc-hero__destaque {
+        border-radius: 14px;
+        font-size: 0.88rem;
+    }
+
     .svc-hero__actions {
         flex-direction: column;
         align-items: stretch;
