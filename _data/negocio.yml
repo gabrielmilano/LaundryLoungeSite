@@ -126,15 +126,16 @@ servicos:
     avaliacoes: []
 
   edredom:
-    prazo: ""               # [PRAZO] ex.: "3 dias úteis" — liga o passo 3 e a pergunta do prazo
+    prazo: ""               # PRAZO_COBERTOR ex.: "3 dias úteis" — liga o passo 3 e a pergunta "Em quanto tempo fica pronto?"
     preco: ""               # [PREÇO] "a partir de", só o número, ex.: "40,00" — liga a seção Preço, o FAQ e o schema
     preco_unidade: ""       # deixe vazio (o preço varia por tamanho)
     lava_pena: false        # [CONFIRMAR COM A LOJA] true se lava edredom de pena/plumas — liga a pergunta do FAQ
-    # Peças que o site atual já confirma. Para incluir manta, travesseiro ou edredom de pena,
+    # Peças confirmadas (manta confirmada em 20/10/2026). Para incluir travesseiro ou edredom de pena,
     # acrescente a linha aqui só depois que a loja confirmar.
     tipos:
-      - "Edredom de todos os tamanhos"
-      - "Cobertor"
+      - "Cobertores e cobertas de todos os tamanhos"
+      - "Edredons de todos os tamanhos"
+      - "Mantas"
       - "Lençóis"
       - "Fronhas"
     # Avaliações reais do Google que citam edredom (mesmo formato de tapetes). Vazio = seção escondida.
@@ -215,8 +216,8 @@ paginas_servico:
     nome: "Lavagem de tapetes"
     resumo: "Lavagem e secagem em máquina, com busca e entrega."
   - url: "/lavagem-de-edredom-e-cobertor-criciuma"
-    nome: "Lavagem de edredom e cobertor"
-    resumo: "Edredons e cobertores de todos os tamanhos, em máquinas com grande capacidade."
+    nome: "Lavagem de cobertor e edredom"
+    resumo: "Cobertores, cobertas e edredons de todos os tamanhos, em máquinas com grande capacidade."
   - url: "/lavar-e-passar-roupas-criciuma"
     nome: "Lavar e passar roupas"
     resumo: "Roupas do dia a dia, sociais e de festa, cuidadas por tipo de tecido."
