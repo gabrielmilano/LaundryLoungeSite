@@ -12,7 +12,7 @@
 {%- for a in d.avaliacoes %}
                 <blockquote class="svc-review">
                     <p>“{{ a.texto }}”</p>
-                    <footer>{{ a.nome }} · <a href="{{ a.url | default: e.google_perfil_url }}" target="_blank" rel="noopener">ver no Google</a></footer>
+                    <footer>{{ a.nome }} · <a href="{{ a.url | default: e.google_perfil_url }}" target="_blank" rel="noopener" data-ga="avaliacao">ver no Google</a></footer>
                 </blockquote>
 {%- endfor %}
             </div>

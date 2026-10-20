@@ -26,7 +26,7 @@
     <!-- FAIXA DE CONFIANÇA -->
     <section class="svc-trust" aria-label="Por que escolher a Laundry Lounge">
         <ul class="container svc-trust__list">
-            <li class="svc-trust__nota">{% include icone.html nome="estrela" classe="svc-trust__estrela" %}<a href="{{ e.google_perfil_url }}" target="_blank" rel="noopener"><strong>{{ e.google_nota }}</strong> · {{ e.google_avaliacoes_texto }}</a></li>
+            <li class="svc-trust__nota">{% include icone.html nome="estrela" classe="svc-trust__estrela" %}<a href="{{ e.google_perfil_url }}" target="_blank" rel="noopener" data-ga="avaliacao"><strong>{{ e.google_nota }}</strong> · {{ e.google_avaliacoes_texto }}</a></li>
             <li>{% include icone.html nome="pin" %}Centro de Criciúma</li>
             <li>{% include icone.html nome="caminhao" %}Busca e entrega</li>
             <li>{% include icone.html nome="cartao" %}PIX e cartão</li>

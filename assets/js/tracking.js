@@ -1,133 +1,74 @@
 /**
- * Tracking — Google Ads (AW-632418375)
+ * Eventos do site (GA4 pela tag do Google AW-632418375, combinada com G-Y0NXRK9QTJ).
  *
- * Este arquivo expõe funções utilitárias para enviar eventos de conversão
- * ao Google Ads. Ele também registra listeners automáticos para:
- *   - Cliques em links WhatsApp (evento "whatsapp_click")
- *   - Cliques em links tel: (evento "phone_click")
- *   - Envio de formulário de contato (evento "form_submit")
+ * Um único listener delegado no document, para todas as páginas:
+ *   whatsapp_click   links wa.me / api.whatsapp.com     → servico, posicao
+ *   phone_click      links tel:                          → servico, posicao
+ *   directions_click links de rota / Google Maps         → servico
+ *   review_click     links marcados com data-ga="avaliacao" ("Ver todas no Google",
+ *                    "Deixe sua avaliação" e a nota do Google)  → servico
  *
- * Links com data-servico / data-posicao enviam esses valores como parâmetros
- * "servico" e "posicao" (ex.: servico = "tapete", posicao = "hero" | "final").
- * Os eventos vão para o GA4 quando o ID estiver preenchido em
- * _data/negocio.yml (rastreamento.ga4_id).
+ * servico = página (front matter ga_servico; padrão "home"): home | tapete | cobertor | roupas | planos
+ * posicao = hero | faq | final | flutuante | card | outro
  *
- * Para ativar uma conversão, substitua o placeholder pelo Conversion Label
- * correspondente no Google Ads.
- *
- * Uso futuro (chamadas manuais):
- *   GoogleAdsTracking.lead();
- *   GoogleAdsTracking.whatsappClick();
- *   GoogleAdsTracking.formSubmit();
- *   GoogleAdsTracking.custom('event_name', { send_to: 'AW-632418375/CONVERSION_LABEL' });
+ * Sem dados pessoais: não envia URL do link, telefone, nome nem texto digitado.
+ * O consentimento (Consent Mode v2) é tratado em _includes/gtag.html e _includes/consentimento.html.
  */
+(function () {
+    'use strict';
 
-const GoogleAdsTracking = (() => {
-    const AW_ID = 'AW-632418375';
-
-    // ── Conversion Labels (placeholder) ──────────────────────────────
-    // Substitua pelos labels reais criados no Google Ads.
-    const CONVERSIONS = {
-        lead:             null, // Ex: 'AbCdEfGhIjKlMnOp'
-        whatsapp_click:   null,
-        form_submit:      null,
-        compra:           null,
-        agendamento:      null,
+    // Conversões do Google Ads: preencha o label quando a conversão for criada no Google Ads.
+    var AW_ID = 'AW-632418375';
+    var CONVERSOES = {
+        whatsapp_click: null, // ex.: 'AbCdEfGhIjKlMnOp'
+        phone_click: null
     };
 
-    // ── Helpers ──────────────────────────────────────────────────────
-    function send(eventName, params = {}) {
-        if (typeof gtag !== 'function') return;
-        gtag('event', eventName, params);
+    var POSICOES = ['hero', 'faq', 'final', 'flutuante', 'card'];
+
+    function servicoDaPagina() {
+        return window.llServico || 'home';
     }
 
-    function conversion(key, extra = {}) {
-        const label = CONVERSIONS[key];
-        if (!label) {
-            console.warn(`[Tracking] Conversion "${key}" não configurada. Adicione o Conversion Label.`);
-            return;
+    function posicaoDoLink(link) {
+        var marcada = (link.getAttribute('data-posicao') || '').toLowerCase();
+        if (POSICOES.indexOf(marcada) > -1) return marcada;
+        if (marcada.indexOf('card') > -1) return 'card';
+        if (marcada) return 'outro';
+        if (link.closest('.whatsapp-float')) return 'flutuante';
+        if (link.closest('.hero, .svc-hero')) return 'hero';
+        if (link.closest('.faq, .svc-faq, #faq, #perguntas')) return 'faq';
+        if (link.closest('.cta-final')) return 'final';
+        if (link.closest('.service-card, .pricing-card, .plans-resumo__item, .svc-outros__card')) return 'card';
+        return 'outro';
+    }
+
+    function tipoDoLink(link) {
+        var href = link.getAttribute('href') || '';
+        if (link.getAttribute('data-ga') === 'avaliacao') return 'review_click';
+        if (/^tel:/i.test(href)) return 'phone_click';
+        if (/(^|\/\/)(wa\.me|api\.whatsapp\.com)\//i.test(href)) return 'whatsapp_click';
+        if (/google\.[a-z.]+\/maps|maps\.google\.|maps\.app\.goo\.gl|goo\.gl\/maps/i.test(href)) return 'directions_click';
+        return null;
+    }
+
+    function enviar(nome, params) {
+        if (typeof window.gtag !== 'function') return;
+        params.transport_type = 'beacon';
+        window.gtag('event', nome, params);
+        var label = CONVERSOES[nome];
+        if (label) {
+            window.gtag('event', 'conversion', { send_to: AW_ID + '/' + label, transport_type: 'beacon' });
         }
-        send('conversion', {
-            send_to: `${AW_ID}/${label}`,
-            ...extra,
-        });
     }
 
-    // ── Públicos ─────────────────────────────────────────────────────
-    return {
-        /** Dispara conversão de Lead genérico. */
-        lead(extra) {
-            conversion('lead', extra);
-        },
-
-        /** Dispara conversão de clique no WhatsApp. */
-        whatsappClick(extra) {
-            conversion('whatsapp_click', extra);
-            send('whatsapp_click', extra);
-        },
-
-        /** Envia evento de clique em link de telefone. */
-        phoneClick(extra) {
-            send('phone_click', extra);
-        },
-
-        /** Dispara conversão de formulário enviado. */
-        formSubmit(extra) {
-            conversion('form_submit', extra);
-            send('form_submit', extra);
-        },
-
-        /** Dispara conversão de compra. */
-        compra(extra) {
-            conversion('compra', extra);
-        },
-
-        /** Dispara conversão de agendamento. */
-        agendamento(extra) {
-            conversion('agendamento', extra);
-        },
-
-        /**
-         * Envia um evento customizado.
-         * @param {string} eventName
-         * @param {object} params - Deve incluir `send_to` se for conversão.
-         */
-        custom(eventName, params) {
-            send(eventName, params);
-        },
-    };
+    document.addEventListener('click', function (ev) {
+        var link = ev.target.closest && ev.target.closest('a[href]');
+        if (!link) return;
+        var nome = tipoDoLink(link);
+        if (!nome) return;
+        var params = { servico: servicoDaPagina() };
+        if (nome === 'whatsapp_click' || nome === 'phone_click') params.posicao = posicaoDoLink(link);
+        enviar(nome, params);
+    }, true);
 })();
-
-// ── Listeners automáticos ───────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-
-    // Parâmetros do evento a partir do link (data-servico / data-posicao)
-    const eventParams = (link) => {
-        const params = { link_url: link.href };
-        if (link.dataset.servico) params.servico = link.dataset.servico;
-        if (link.dataset.posicao) params.posicao = link.dataset.posicao;
-        return params;
-    };
-
-    // WhatsApp clicks (qualquer link wa.me)
-    document.querySelectorAll('a[href*="wa.me/"]').forEach(link => {
-        link.addEventListener('click', () => {
-            GoogleAdsTracking.whatsappClick(eventParams(link));
-        });
-    });
-
-    // Cliques em telefone
-    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-        link.addEventListener('click', () => {
-            GoogleAdsTracking.phoneClick(eventParams(link));
-        });
-    });
-
-    // Formulário de contato
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', () => {
-            GoogleAdsTracking.formSubmit();
-        });
-    }
-});

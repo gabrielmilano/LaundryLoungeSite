@@ -28,9 +28,9 @@
 {%- endfor %}
             </ul>
             <div class="reviews__acoes">
-                <a href="{{ e.google_perfil_url }}" class="btn btn--primary" target="_blank" rel="noopener">Ver todas no Google</a>
+                <a href="{{ e.google_perfil_url }}" class="btn btn--primary" target="_blank" rel="noopener" data-ga="avaliacao">Ver todas no Google</a>
 {%- unless include.compacto %}
-                <a href="{{ e.google_avaliar_url }}" class="btn btn--contorno" target="_blank" rel="noopener">Deixe sua avaliação</a>
+                <a href="{{ e.google_avaliar_url }}" class="btn btn--contorno" target="_blank" rel="noopener" data-ga="avaliacao">Deixe sua avaliação</a>
 {%- endunless %}
             </div>
         </div>

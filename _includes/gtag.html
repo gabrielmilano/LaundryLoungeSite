@@ -26,6 +26,8 @@
         } catch (e) {}
 
         gtag('js', new Date());
+        // Serviço da página para os eventos (front matter ga_servico; padrão "home") — ver assets/js/tracking.js
+        window.llServico = {{ page.ga_servico | default: "home" | jsonify }};
         gtag('config', '{{ rastreamento.google_ads_id }}');
 
         // A tag só baixa depois que a página carrega, para não disputar banda com o conteúdo.
